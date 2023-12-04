@@ -68,7 +68,7 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/statuskebenaran/destroy/{id}', [StatusKebenaranController::class, 'destroy'])->name('statuskebenaran.destroy')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
 
     // keluar-masuk pelajar
-    Route::get('/keluarmasuk', [KeluarMasukController::class, 'index'])->name('keluarmasuk.index')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::get('/keluarmasuk', [KeluarMasukController::class, 'index'])->name('keluarmasuk.index')->middleware(['tidakbolehAkses:1', 'tidakbolehAkses:2', 'tidakbolehAkses:4']);
     Route::get('/keluarmasuk/mohonkeluar', [KeluarMasukController::class, 'mohonkeluar'])->name('keluarmasuk.mohonkeluar')->middleware(['tidakbolehAkses:1', 'tidakbolehAkses:2', 'tidakbolehAkses:3']); //pelajar mohon keluar
     Route::post('/keluarmasuk/simpanmohonkeluar', [KeluarMasukController::class, 'simpanmohonkeluar'])->name('keluarmasuk.simpanmohonkeluar')->middleware(['tidakbolehAkses:1', 'tidakbolehAkses:2', 'tidakbolehAkses:3']); //simpan mohon keluar
     Route::get('/keluarmasuk/semakpermohonan', [KeluarMasukController::class, 'semakPermohonan'])->name('keluarmasuk.semakpermohonan')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
