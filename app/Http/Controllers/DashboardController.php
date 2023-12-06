@@ -37,11 +37,27 @@ class DashboardController extends Controller
 
         // cari data hari ini
         $hariini = Carbon::today()->toDateString();
-        $data_hariini = KeluarMasuk::whereDate('tarikh_keluar', $hariini)->get();
+        $rekod_keluar_sekarang = KeluarMasuk::whereDate('tarikh_keluar', $hariini)
+            ->where('tujuan_id', '1')
+            ->get();
+        $rekod_balik_sekarang = KeluarMasuk::whereDate('tarikh_keluar', $hariini)
+            ->where('tujuan_id', '2')
+            ->get();
+        $rekod_klinik_sekarang = KeluarMasuk::whereDate('tarikh_keluar', $hariini)
+            ->where('tujuan_id', '3')
+            ->get();
 
         // cari data semalam
         $semalam = Carbon::yesterday()->toDateString();
-        $data_semalam = KeluarMasuk::whereDate('tarikh_keluar', $semalam)->get();
+        $rekod_keluar_semalam = KeluarMasuk::whereDate('tarikh_keluar', $semalam)
+            ->where('tujuan_id', '1')
+            ->get();
+        $rekod_balik_semalam = KeluarMasuk::whereDate('tarikh_keluar', $semalam)
+            ->where('tujuan_id', '2')
+            ->get();
+        $rekod_klinik_semalam = KeluarMasuk::whereDate('tarikh_keluar', $semalam)
+            ->where('tujuan_id', '3')
+            ->get();
 
         return view('dashboard.index', compact(
             'dataKeluarMasuk',
@@ -51,8 +67,12 @@ class DashboardController extends Controller
             'data_klinik',
             'data_lelaki',
             'data_perempuan',
-            'data_hariini',
-            'data_semalam'
+            'rekod_keluar_semalam',
+            'rekod_klinik_semalam',
+            'rekod_balik_semalam',
+            'rekod_keluar_sekarang',
+            'rekod_klinik_sekarang',
+            'rekod_balik_sekarang'
         ));
 
         // kaedah blade directive

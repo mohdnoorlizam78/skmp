@@ -43,7 +43,7 @@
                     <div class="inner">
                         <h4 style="text-align: center;">Jumlah Keluar </h4>
                         <p>
-                        <h1 style="text-align: center;">{{$data_hariini->count()}} orang</h1>
+                        <h1 style="text-align: center;">{{$rekod_keluar_sekarang->count()}} orang</h1>
                         </p>
 
                     </div>
@@ -59,7 +59,7 @@
                     <div class="inner">
                         <h4 style="text-align: center;">Jumlah Ke Klinik </h4>
                         <p>
-                        <h1 style="text-align: center;">{{$data_klinik->count()}} orang</h1>
+                        <h1 style="text-align: center;">{{$rekod_klinik_sekarang->count()}} orang</h1>
                         </p>
 
                     </div>
@@ -75,7 +75,7 @@
                     <div class="inner">
                         <h4 style="text-align: center;">Jumlah Balik </h4>
                         <p>
-                        <h1 style="text-align: center;">{{$data_balik->count()}} orang</h1>
+                        <h1 style="text-align: center;">{{$rekod_balik_sekarang->count()}} orang</h1>
                         </p>
 
                     </div>
@@ -104,7 +104,7 @@ echo $yesterday;  ?></h4>
                     <div class="inner">
                         <h4 style="text-align: center;">Jumlah Keluar </h4>
                         <p>
-                        <h1 style="text-align: center;">{{$data_semalam->count()}} orang</h1>
+                        <h1 style="text-align: center;">{{$rekod_keluar_semalam->count()}} orang</h1>
                         </p>
 
                     </div>
@@ -120,7 +120,7 @@ echo $yesterday;  ?></h4>
                     <div class="inner">
                         <h4 style="text-align: center;">Jumlah Ke Klinik </h4>
                         <p>
-                        <h1 style="text-align: center;">{{$data_klinik->count()}} orang</h1>
+                        <h1 style="text-align: center;">{{$rekod_klinik_semalam->count()}} orang</h1>
                         </p>
 
                     </div>
@@ -136,7 +136,7 @@ echo $yesterday;  ?></h4>
                     <div class="inner">
                         <h4 style="text-align: center;">Jumlah Balik </h4>
                         <p>
-                        <h1 style="text-align: center;">{{$data_balik->count()}} orang</h1>
+                        <h1 style="text-align: center;">{{$rekod_balik_semalam->count()}} orang</h1>
                         </p>
 
                     </div>
