@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -34,6 +35,14 @@ class DashboardController extends Controller
         $data_lelaki = Pelajar::where('jantina', '1')->get();
         $data_perempuan = Pelajar::where('jantina', '2')->get();
 
+        // cari data hari ini
+        $hariini = Carbon::today()->toDateString();
+        $data_hariini = KeluarMasuk::whereDate('tarikh_keluar', $hariini)->get();
+
+        // cari data semalam
+        $semalam = Carbon::yesterday()->toDateString();
+        $data_semalam = KeluarMasuk::whereDate('tarikh_keluar', $semalam)->get();
+
         return view('dashboard.index', compact(
             'dataKeluarMasuk',
             'data_pelajar',
@@ -41,7 +50,9 @@ class DashboardController extends Controller
             'data_balik',
             'data_klinik',
             'data_lelaki',
-            'data_perempuan'
+            'data_perempuan',
+            'data_hariini',
+            'data_semalam'
         ));
 
         // kaedah blade directive
