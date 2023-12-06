@@ -71,8 +71,5 @@ class Kernel extends HttpKernel
         'pelajarAkses' => \App\Http\Middleware\PelajarAkses::class,
         'tidakbolehAkses' => \App\Http\Middleware\TidakBolehAkses::class,
 
-        'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
-        'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
-        'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
     ];
 }
