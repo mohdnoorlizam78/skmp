@@ -56,7 +56,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pelajar/edit/{id}', [PelajarController::class, 'edit'])->name('pelajar.edit')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
     Route::patch('/pelajar/update/{id}', [PelajarController::class, 'update'])->name('pelajar.update')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
     Route::delete('/pelajar/destroy/{id}', [PelajarController::class, 'destroy'])->name('pelajar.destroy')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
-    Route::get('/pelajar/info/{id}', [PelajarController::class, 'info'])->name('pelajar.info')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::get('/pelajar/info/{id}', [PelajarController::class, 'info'])->name('pelajar.info');
 
     //permohonan pelajar
     Route::get('/statuskebenaran/', [StatusKebenaranController::class, 'index'])->name('statuskebenaran.index')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
@@ -70,7 +70,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/keluarmasuk/mohonkeluar', [KeluarMasukController::class, 'mohonkeluar'])->name('keluarmasuk.mohonkeluar')->middleware(['tidakbolehAkses:1', 'tidakbolehAkses:2', 'tidakbolehAkses:3']); //pelajar mohon keluar
     Route::post('/keluarmasuk/simpanmohonkeluar', [KeluarMasukController::class, 'simpanmohonkeluar'])->name('keluarmasuk.simpanmohonkeluar')->middleware(['tidakbolehAkses:1', 'tidakbolehAkses:2', 'tidakbolehAkses:3']); //simpan mohon keluar
     Route::get('/keluarmasuk/semakpermohonan', [KeluarMasukController::class, 'semakPermohonan'])->name('keluarmasuk.semakpermohonan')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
-    Route::patch('/keluarmasuk/updatemohon/{id}', [KeluarMasukController::class, 'updateMohon'])->name('keluarmasuk.updatemohon')->middleware([uarMasukController::class, 'semakPermohonan'])->name('keluarmasuk.semakpermohonan')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::patch('/keluarmasuk/updatemohon/{id}', [KeluarMasukController::class, 'updatemohon'])->name('keluarmasuk.updatemohon')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
 
     Route::post('/keluarmasuk/store', [KeluarMasukController::class, 'store'])->name('keluarmasuk.store')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
     Route::get('/keluarmasuk/editmohon/{id}', [KeluarMasukController::class, 'editmohon'])->name('keluarmasuk.editmohon')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);

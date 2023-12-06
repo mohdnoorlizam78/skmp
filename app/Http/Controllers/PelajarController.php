@@ -22,14 +22,14 @@ class PelajarController extends Controller
         return view('pelajar.index', compact('senaraiPelajar', 'senaraiKursus', 'sesiMasuk'));
         //return view('pelajar.index', ['senaraiPelajar' => $senaraiPelajar]);
     }
-    // public function info(Request $request, string $id)
-    // {
-    //     // paparkan maklumat terperinci pelajar
-    //     $kemaskiniPelajar = Pelajar::find($id);
-    //     $senaraiKursus = Kursus::all();
-    //     $senaraiSesiMasuk = SesiMasuk::all();
-    //     return view('pelajar.info', compact('kemaskiniPelajar', 'senaraiKursus', 'senaraiSesiMasuk'));
-    // }
+    public function info(Request $request, string $id)
+    {
+        // paparkan maklumat terperinci pelajar
+        $kemaskiniPelajar = Pelajar::find($id);
+        $senaraiKursus = Kursus::all();
+        $senaraiSesiMasuk = SesiMasuk::all();
+        return view('pelajar.info', compact('kemaskiniPelajar', 'senaraiKursus', 'senaraiSesiMasuk'));
+    }
 
     /**
      * Show the form for creating a new resource.

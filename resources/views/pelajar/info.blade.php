@@ -32,9 +32,9 @@
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label for="semester" class="col-sm-2 col-form-label">Semester</label>
+                        <label for="sesimasuk_id" class="col-sm-2 col-form-label">Sesi Kemasukan</label>
                         <div class="col-sm-10">
-                            <input type="text" readonly name="semester" class="form-control-plaintext" id="semester" value="{{$kemaskiniPelajar->semester}}">
+                            <input type="text" readonly name="sesimasuk_id" class="form-control-plaintext" id="sesimasuk_id" value="{{$kemaskiniPelajar->sesimasuk->nama_sesi}}">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -64,7 +64,13 @@
                     <div class="form-group row">
                         <label for="status" class="col-sm-2 col-form-label">Status</label>
                         <div class="col-sm-10">
-                            <input type="text" readonly name="status" class="form-control-plaintext" id="status" value="{{$kemaskiniPelajar->status}}">
+                            @if($kemaskiniPelajar->status == 0)
+                                    Berhenti
+                                    @elseif($kemaskiniPelajar->status == 1)
+                                    Aktif
+                                    @else
+                                    Tangguh
+                                    @endif
                         </div>
 
                     </div>

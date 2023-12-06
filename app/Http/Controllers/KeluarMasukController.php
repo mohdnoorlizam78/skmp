@@ -41,7 +41,7 @@ class KeluarMasukController extends Controller
         $pelajarid = Auth()->user()->id;
         $pelajarData = Pelajar::where('user_id', $pelajarid)->first();
 
-        $dataMohon = KeluarMasuk::all();
+        $dataMohon = KeluarMasuk::where('user_id', $pelajarid)->get();
         $senaraiTujuan = Tujuan::all();
 
         return view('keluarmasuk.mohonkeluar', compact(
@@ -82,11 +82,19 @@ class KeluarMasukController extends Controller
     public function semakPermohonan()
     {
         //paparkan status permohonan pelajar
-        //$statusMohon = KeluarMasuk::all();
         $statusMohon = KeluarMasuk::orderBy('created_at', 'desc')->get();
         $senaraiTujuan = Tujuan::all();
         $semakStatus = KeluarMasuk::where('statuskebenaran_id', '1')->get();
-        return view('keluarmasuk.semakpermohonan', compact('statusMohon', 'senaraiTujuan', 'semakStatus'));
+        // $tiadaPermohonan =  KeluarMasuk::where('statuskebenaran_id', '2')
+        //     ->where('statuskebenaran_id', '3')
+        //     ->get();
+
+        return view('keluarmasuk.semakpermohonan', compact(
+            'statusMohon',
+            'senaraiTujuan',
+            'semakStatus',
+            // 'tiadaPermohonan'
+        ));
     }
     public function editmohon(string $id)
     {
@@ -102,7 +110,7 @@ class KeluarMasukController extends Controller
         $senaraiTujuan = Tujuan::all();
         return view('keluarmasuk.sahkanmohon', compact('senaraiPermohonan', 'senaraiTujuan'));
     }
-    public function updateMohon(Request $request, string $id)
+    public function updatemohon(Request $request, string $id)
     {
         //Kemas kini permohonan baru
         $kemaskiniPermohonan = KeluarMasuk::find($id);

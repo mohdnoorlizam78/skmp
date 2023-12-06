@@ -173,7 +173,7 @@
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                            <button type="submit" class="btn btn-primary">Hantar</button>
+                            <button type="submit" class="btn btn-primary">Ya</button>
                         </div>
                     </form>
                 </div>
@@ -215,7 +215,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary">Hantar</button>
+                    <button type="submit" class="btn btn-primary">Ya</button>
                 </div>
                 </form>
             </div>
@@ -249,7 +249,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                    <button type="submit" class="btn btn-primary">Hantar</button>
+                    <button type="submit" class="btn btn-primary">Ya</button>
                 </div>
                 </form>
             </div>

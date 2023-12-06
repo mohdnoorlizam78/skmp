@@ -72,7 +72,10 @@
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$pelajar->gambar}}</td>
-                                <td>{{$pelajar->nama_pelajar}}</td>
+                                <td>
+                                    <a href="{{ route('pelajar.info', $pelajar->id) }}">{{$pelajar->nama_pelajar}}</a>
+                                    
+                                </td>
                                 <td>{{$pelajar->kursus->nama_kursus}}</td>
                                 <td>{{$pelajar->no_ndp}}</td>
                                 <td>{{$pelajar->sesimasuk->nama_sesi}}</td>
