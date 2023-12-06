@@ -15,7 +15,7 @@
         </div>
     </div><!-- /.container-fluid -->
 </section>
-<!-- 
+
 <hr />
 @if(Session::has('success'))
 <div class="alert alert-success" role="alert">
@@ -31,7 +31,7 @@
         @endforeach
     </ul>
 </div>
-@endif -->
+@endif 
 
 
 <div class="container-fluid">

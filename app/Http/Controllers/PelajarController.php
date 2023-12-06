@@ -100,7 +100,12 @@ class PelajarController extends Controller
         //kemas kini senarai pelajar
         $kemaskiniPelajar = Pelajar::find($id);
         $senaraiKursus = Kursus::all();
-        return view('pelajar.edit', compact('kemaskiniPelajar', 'senaraiKursus'));
+        $sesiKemasukan = SesiMasuk::all();
+        return view('pelajar.edit', compact(
+            'kemaskiniPelajar',
+            'senaraiKursus',
+            'sesiKemasukan'
+        ));
     }
 
     /**

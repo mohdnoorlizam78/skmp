@@ -42,9 +42,15 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label for="semester" class="col-sm-2 col-form-label">Semester</label>
+                            <label for="sesimasuk_id" class="col-sm-2 col-form-label">Sesi Kemasukan</label>
                             <div class="col-sm-10">
-                                <input type="text" name="semester" class="form-control" id="semester" value="{{$kemaskiniPelajar->semester}}">
+                                 
+                                    <select id="sesimasuk_id" name="sesimasuk_id" class="form-control">
+                                        @foreach ($sesiKemasukan as $sesimasuk)
+                                        <option value="{{ $sesimasuk->id }}" {{$kemaskiniPelajar->sesimasuk_id == $sesimasuk->id ? 'selected' : '' }}>{{ $sesimasuk->nama_sesi }}</option>
+                                        @endforeach
+                                    </select>
+                               
                             </div>
                         </div>
                         <div class="form-group row">
