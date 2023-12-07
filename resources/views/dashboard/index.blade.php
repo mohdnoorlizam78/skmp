@@ -1,28 +1,29 @@
 @extends('layouts.master')
 @section('content')
-<div class="content-header">
+<section class="content-header">
     <div class="container-fluid">
         <div class="row mb-2">
-          
+            <div class="col-sm-6">
+                <h1>DASHBOARD</h1>
+            </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Utama</a></li>
-                    <li class="breadcrumb-item active">Dashboard</li>
+                    <li class="breadcrumb-item active">dashboard</li>
                 </ol>
-            </div><!-- /.col -->
-        </div><!-- /.row -->
+            </div>
+        </div>
     </div><!-- /.container-fluid -->
-</div>
-<!-- /.content-header -->
+</section>
 
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
         <div class="small-box bg-info">
             <div class="inner">
-                <h4 style="text-align: center;">Keseluruhan Pelajar sehingga kini: </h4>
+                <h4 style="text-align: center;">Keseluruhan pelajar aktif sehingga kini: </h4>
                 <p>
-                <h1 style="text-align: center;">{{$data_pelajar->count()}} orang</h1>
+                <h1 style="text-align: center;">{{$pelajar_aktif->count()}} orang</h1>
                 </p>
             </div>
             <div class="icon">
