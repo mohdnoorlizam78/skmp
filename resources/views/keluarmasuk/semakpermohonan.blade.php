@@ -64,8 +64,10 @@
                                     <a href="{{ route('keluarmasuk.sahkanmohon', $pelajar->id) }}"><span class="badge badge-info">Dalam proses</span></a>
                                     @elseif($pelajar->statuskebenaran_id == "2")
                                     <span class="badge badge-success">Diluluskan</span>
-                                    @else
+                                    @elseif($pelajar->statuskebenaran_id == "3")
                                     <span class="badge badge-danger">Ditolak</span>
+                                    @else
+                                    <span class="badge badge-danger">Digantung</span>
                                     @endif
 
                                 </td>
