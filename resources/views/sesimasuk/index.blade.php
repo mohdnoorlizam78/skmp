@@ -30,7 +30,6 @@
 
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Senarai sesi</h3>
                     <br>
                     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-sm">
                         Rekod Baru
