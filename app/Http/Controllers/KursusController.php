@@ -47,7 +47,7 @@ class KursusController extends Controller
         Kursus::create($data);
 
         //return view('tujuan.index', compact('simpanData'))->with('success', 'Rekod berjaya disimpan.');
-        return redirect(route('user.index'))->with('success', 'Rekod berjaya disimpan');
+        return redirect(route('kursus.index'))->with('success', 'Rekod berjaya disimpan');
     }
 
     /**

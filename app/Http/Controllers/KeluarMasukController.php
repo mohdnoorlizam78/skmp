@@ -29,7 +29,7 @@ class KeluarMasukController extends Controller
     public function rekodpenuh()
     {
         // paparkan rekod keseluruhan keluar masuk
-        $dataKeluarMasuk = KeluarMasuk::all();
+        $dataKeluarMasuk = KeluarMasuk::orderBy('created_at', 'desc')->get();
         $tidakBolehKeluarMasuk = KeluarMasuk::where('statuskebenaran_id', '3')->get();
 
         return view('keluarmasuk.rekodpenuh', compact('dataKeluarMasuk', 'tidakBolehKeluarMasuk'));

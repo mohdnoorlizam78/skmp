@@ -77,7 +77,6 @@
                                     <td>{{$keluarmasuk->ndp_id}}</td>
                                     <td>
                                         @if($keluarmasuk->tarikh_keluar == Null)
-
                                         <a href="{{ route('keluarmasuk.editkeluar', $keluarmasuk->id) }}" class="btn btn-warning btn-sm">Sahkan keluar</a>
                                         @else
                                         {{$keluarmasuk->tarikh_keluar}}
@@ -86,29 +85,24 @@
                                     <td>{{$keluarmasuk->masa_keluar}}</td>
                                     <td>
                                         @if($keluarmasuk->tarikh_masuk == Null)
-
                                         <a href="{{ route('keluarmasuk.editmasuk', $keluarmasuk->id) }}" class="btn btn-danger btn-sm">Sahkan masuk</a>
                                         @else
                                         {{$keluarmasuk->tarikh_masuk}}
                                         @endif
                                     </td>
                                     <td>{{$keluarmasuk->masa_masuk}}</td>
+                                    <td> 
+                                        @if($keluarmasuk->status_masuk == 0)
+                                        Belum keluar
+                                        @elseif($keluarmasuk->status_masuk == 1)
+                                        <p style="background-color: #FFC300;">Pelajar keluar</p>
+                                        @elseif($keluarmasuk->status_masuk == 2)
+                                        <p>Baik</p>
+                                        @else
+                                        <p style="background-color: #FF4D00;">Lambat</p>
+                                        @endif
 
-                                    @if($keluarmasuk->status_masuk == 0)
-                                    <td>Belum keluar</td>
-
-                                    @elseif($keluarmasuk->status_masuk == 1)
-                                    <td style="background-color: #FFC300;">Pelajar keluar</td>
-
-                                    @elseif($keluarmasuk->status_masuk == 2)
-                                    <td>Baik</td>
-
-                                    @else
-                                    {{$keluarmasuk->status_masuk == 3}};
-                                    <td style="background-color: #FF4D00;">Lambat</td>
-                                    @endif
-
-
+                                    </td>
                                 </tr>
                                 @endforeach
                             </tbody>

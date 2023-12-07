@@ -72,22 +72,23 @@
                                 @foreach($dataKeluarMasuk as $keluarmasuk )
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
-                                    <td> {{$keluarmasuk->dibenarkan->name}} </td>
+                                    <td>{{$keluarmasuk->dibenarkan->name}}</td>
                                     <td>{{$keluarmasuk->ndp_id}}</td>
                                     <td>
                                         @if($keluarmasuk->tarikh_keluar == Null)
-
                                         <a href="{{ route('keluarmasuk.editkeluar', $keluarmasuk->id) }}" class="btn btn-warning btn-sm">Sahkan keluar</a>
                                         @else
                                         {{$keluarmasuk->tarikh_keluar}}
                                         @endif
                                     </td>
                                     <td>{{$keluarmasuk->masa_keluar}}</td>
-                                    @if($keluarmasuk->pegawaikeluar_id != 0)
-                                    <td>{{$keluarmasuk->pengawalKeluar->name}}</td>
-                                    @else
-                                    <td></td>
-                                    @endif
+                                    <td>
+                                        @if($keluarmasuk->pegawaikeluar_id != 0)
+                                        {{$keluarmasuk->pengawalKeluar->name}}
+                                        @else
+                                        <p></p>
+                                        @endif
+                                    </td>
                                     <td>
                                         @if($keluarmasuk->tarikh_masuk == Null)
                                         <a href="{{ route('keluarmasuk.editmasuk', $keluarmasuk->id) }}" class="btn btn-danger btn-sm">Sahkan masuk</a>
@@ -96,26 +97,30 @@
                                         @endif
                                     </td>
                                     <td>{{$keluarmasuk->masa_masuk}}</td>
-                                    @if($keluarmasuk->pegawaimasuk_id != 0)
-                                    <td>{{$keluarmasuk->pengawalMasuk->name}}</td>
-                                    @else
-                                    <td></td>
-                                    @endif
+                                    
+                                    <td>
+                                        @if($keluarmasuk->pegawaimasuk_id != 0)
+                                        {{$keluarmasuk->pengawalMasuk->name}}
+                                        @else
+                                        <p></p>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($keluarmasuk->status_masuk == 0)
+                                        Belum keluar
 
-                                    @if($keluarmasuk->status_masuk == 0)
-                                    <td>Belum keluar</td>
+                                        @elseif($keluarmasuk->status_masuk == 1)
+                                        <p style="background-color: #FFC300;">Pelajar keluar</p>
 
-                                    @elseif($keluarmasuk->status_masuk == 1)
-                                    <td style="background-color: #FFC300;">Pelajar keluar</td>
+                                        @elseif($keluarmasuk->status_masuk == 2)
+                                        <p>Baik<p>
 
-                                    @elseif($keluarmasuk->status_masuk == 2)
-                                    <td>Baik</td>
-
-                                    @else
-                                    {{$keluarmasuk->status_masuk == 3}};
-                                    <td style="background-color: #FF4D00;">Lambat</td>
-                                    @endif
-
+                                        @else
+                                        {{-- {{$keluarmasuk->status_masuk == 3}} --}}
+                                        <p style="background-color: #FF4D00;">Lambat</p>
+                                        
+                                        @endif
+                                        </td>
 
                                 </tr>
                                 @endforeach
@@ -132,15 +137,11 @@
                                     <th>Masa Masuk</th>
                                     <th>Pengawal sahkan masuk</th>
                                     <th>Status Masuk</th>
-
                                 </tr>
                             </tfoot>
                         </table>
-
                     </div>
-                    
                 </div>
-
             </div>
 
             <div class="tab-pane" id="tidakdibenarkan">
