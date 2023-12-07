@@ -32,8 +32,14 @@ class DashboardController extends Controller
         $data_outing = KeluarMasuk::where('tujuan_id', '1')->get();
         $data_balik = KeluarMasuk::where('tujuan_id', '2')->get();
         $data_klinik = KeluarMasuk::where('tujuan_id', '3')->get();
-        $data_lelaki = Pelajar::where('jantina', '1')->get();
-        $data_perempuan = Pelajar::where('jantina', '2')->get();
+        $pelajar_aktif = Pelajar::where('status', '1')->get();
+        $data_lelaki = Pelajar::where('jantina', '1')
+            ->where('status', '1')
+            ->get();
+
+        $data_perempuan = Pelajar::where('jantina', '2')
+            ->where('status', '1')
+            ->get();
 
         // cari data hari ini
         $hariini = Carbon::today()->toDateString();
@@ -65,6 +71,7 @@ class DashboardController extends Controller
             'data_outing',
             'data_balik',
             'data_klinik',
+            'pelajar_aktif',
             'data_lelaki',
             'data_perempuan',
             'rekod_keluar_semalam',
