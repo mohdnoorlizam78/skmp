@@ -243,7 +243,7 @@
                         <input type="hidden" class="form-control" id="user_id" name="user_id" value="{{$pelajarData->user_id}}" readonly>
                         <input type="hidden" class="form-control" id="ndp_id" name="ndp_id" value="{{$pelajarData->no_ndp}}" readonly>
                         <input type="hidden" class="form-control" id="tujuan_id" name="tujuan_id" value="3" readonly>
-                        <input type="hidden" class="form-control" id="statuskebenaran_id" name="statuskebenaran_id" value="1" readonly>
+                        <input type="hidden" class="form-control" id="statuskebenaran_id" name="statuskebenaran_id" value="2" readonly>
 
 
                 </div>
