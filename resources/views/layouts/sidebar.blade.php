@@ -43,7 +43,6 @@
         </a>
       </li>
 
-
 @if(Auth()->user()->peranan_id == "2" )
       <li class="nav-header">PENGURUSAN PELAJAR</li>
       <li class="nav-item">
