@@ -30,9 +30,15 @@
                                         Ditolak
                                     </label>
                                 </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="statuskebenaran_id" id="statuskebenaran_id" value="4">
+                                    <label class="form-check-label" for="status_kebenaran">
+                                        Digantung
+                                    </label>
+                                </div>
                                 <div class="mb-3">
                                     <label for="catatan" class="col-form-label">Catatan:</label>
-                                    <input type="text" class="form-control" id="catatan" name="catatan" required>
+                                    <input type="text" class="form-control" id="catatan" name="catatan">
                                 </div>
                             </div>
 
