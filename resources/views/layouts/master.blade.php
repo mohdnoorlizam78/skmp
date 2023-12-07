@@ -22,7 +22,6 @@
           <a style="text-align:right;" id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">{{Auth()->user()->name}}</a>
           <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
             <li><a href="{{route('user.infopengguna', Auth()->user()->id)}}" class="dropdown-item">Profail </a></li>
-            <li><a href="" class="dropdown-item">Tukar Katalaluan </a></li>
             <li><a href="{{route('logout')}}" class="fas fa-sign-out-alt">Log keluar</a></li>
 
 
