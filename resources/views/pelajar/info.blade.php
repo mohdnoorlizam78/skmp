@@ -77,11 +77,7 @@
                     <div class="form-group row">
                         <label for="nama_kursus" class="col-sm-2 col-form-label">Kursus</label>
                         <div class="col-sm-10">
-                            <select id="nama_kursus" readonly name="nama_kursus" class="form-control-plaintext">
-                                @foreach ($senaraiKursus as $kursus)
-                                <option value="{{$kursus->id}}" {{old($kemaskiniPelajar->id == $kursus->id) ?'selected' : '' }}>{{$kursus->nama_kursus}}</option>
-                                @endforeach
-                            </select>
+                            <input type="text" readonly name="nama_kursus" class="form-control-plaintext" id="nama_kursus" value="{{$kemaskiniPelajar->kursus->nama_kursus}}">
                         </div>
                     </div>
 
