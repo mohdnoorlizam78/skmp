@@ -20,7 +20,7 @@ class KeluarMasukController extends Controller
     public function index()
     {
         // paparkan rekod keluar masuk
-        $dibenarkanKeluarMasuk = KeluarMasuk::all(); //dibenarkan keluar
+        $dibenarkanKeluarMasuk = KeluarMasuk::orderBy('created_at', 'desc')->get(); //dibenarkan keluar
         $tidakBolehKeluarMasuk = KeluarMasuk::where('statuskebenaran_id', '3')->get();
 
         return view('keluarmasuk.index', compact('dibenarkanKeluarMasuk', 'tidakBolehKeluarMasuk'));

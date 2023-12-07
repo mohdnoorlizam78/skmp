@@ -30,6 +30,10 @@
                                         Ditolak
                                     </label>
                                 </div>
+                                <div class="mb-3">
+                                    <label for="catatan" class="col-form-label">Catatan:</label>
+                                    <input type="text" class="form-control" id="catatan" name="catatan" required>
+                                </div>
                             </div>
 
                         </div>

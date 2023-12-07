@@ -42,7 +42,7 @@
           </p>
         </a>
       </li>
-      <?php echo Auth()->user()->peranan_id;?>
+
 
 @if(Auth()->user()->peranan_id == "2" )
       <li class="nav-header">PENGURUSAN PELAJAR</li>

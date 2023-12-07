@@ -9,7 +9,7 @@
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
                     <li class="breadcrumb-item"><a href="#">Utama</a></li>
-                    <li class="breadcrumb-item active">senarai kursus</li>
+                    <li class="breadcrumb-item active">Rekod Keluar-Masuk</li>
                 </ol>
             </div>
         </div>
