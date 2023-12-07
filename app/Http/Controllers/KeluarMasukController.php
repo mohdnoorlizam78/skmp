@@ -199,6 +199,6 @@ class KeluarMasukController extends Controller
     {
         // buang rekod permohonan pelajar dalam status proses atau tidak jadi keluar
         KeluarMasuk::destroy($id);
-        return redirect('keluarmasuk.mohonkeluar');
+        return redirect('keluarmasuk/mohonkeluar');
     }
 }

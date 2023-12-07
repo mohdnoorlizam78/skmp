@@ -24,7 +24,7 @@
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
       <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-
+               @if(Auth()->user()->peranan_id == "2" )
       <li class="nav-item">
         <a href="{{url('/dashboard')}}" class="nav-link">
           <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -33,6 +33,7 @@
           </p>
         </a>
       </li>
+      @endif
       <li class="nav-item">
         <a href="{{route('user.infopengguna', Auth()->user()->id)}}" class="nav-link">
           <i class="nav-icon fas fa-tachometer-alt"></i>

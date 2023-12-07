@@ -15,6 +15,7 @@ class TidakBolehAkses
      */
     public function handle(Request $request, Closure $next, $role): Response
     {
+        // tentukan peranan pengguna
         if (auth()->user()->peranan_id == $role) {
             return response()->json('Tidak boleh akses');
         } else

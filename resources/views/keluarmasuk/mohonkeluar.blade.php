@@ -112,13 +112,13 @@
 
                         </td>
                         <td>
-                            @if($pelajar->statuskebenaran_id == "1")
+                            {{-- @if($pelajar->statuskebenaran_id == "1")
                             <a href="{{ route('keluarmasuk.editmohon', $pelajar->id) }}"><button class="btn btn-warning btn-sm"> Edit </button></a>
                             @elseif($pelajar->statuskebenaran_id == "2")
                             <a></a>
                             @else
                             <a></a>
-                            @endif
+                            @endif --}}
 
                             @if($pelajar->statuskebenaran_id == "1")
                             <form id="deleteData" method="post" action="{{route('keluarmasuk.destroy', $pelajar->id)}}">

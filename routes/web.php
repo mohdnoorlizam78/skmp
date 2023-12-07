@@ -34,7 +34,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index')->middleware('pentadbirAkses');;
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index')->middleware('tidakbolehAkses:4');
     //kursus
     Route::get('kursus', [KursusController::class, 'index'])->name('kursus.index')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
     Route::post('/kursus/store', [KursusController::class, 'store'])->name('kursus.store')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
@@ -76,7 +76,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/keluarmasuk/editmohon/{id}', [KeluarMasukController::class, 'editmohon'])->name('keluarmasuk.editmohon')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
     Route::get('/keluarmasuk/sahkanmohon/{id}', [KeluarMasukController::class, 'sahkanmohon'])->name('keluarmasuk.sahkanmohon')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
     Route::patch('/keluarmasuk/update/{id}', [KeluarMasukController::class, 'update'])->name('keluarmasuk.update')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
-    Route::delete('/keluarmasuk/destroy/{id}', [KeluarMasukController::class, 'destroy'])->name('keluarmasuk.destroy')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::delete('/keluarmasuk/destroy/{id}', [KeluarMasukController::class, 'destroy'])->name('keluarmasuk.destroy')->middleware(['tidakbolehAkses:3']);
     Route::get('/keluarmasuk/editkeluar/{id}', [KeluarMasukController::class, 'editkeluar'])->name('keluarmasuk.editkeluar')->middleware(['tidakbolehAkses:1', 'tidakbolehAkses:2', 'tidakbolehAkses:4']);
     Route::patch('/keluarmasuk/updatekeluar/{id}', [KeluarMasukController::class, 'updatekeluar'])->name('keluarmasuk.updatekeluar')->middleware(['tidakbolehAkses:1', 'tidakbolehAkses:2', 'tidakbolehAkses:4']);
     Route::get('/keluarmasuk/editmasuk/{id}', [KeluarMasukController::class, 'editmasuk'])->name('keluarmasuk.editmasuk')->middleware(['tidakbolehAkses:1', 'tidakbolehAkses:2', 'tidakbolehAkses:4']);

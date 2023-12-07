@@ -50,10 +50,10 @@
             <div class="tab-pane active" id="dibenarkan">
                 <div class="card">
                     <div class="card-header">
-                        <h4>Senarai keseluruhan pelajar dibenarkan keluar.</h4>
+                        <h4>Senarai keseluruhan pelajar dibenarkan keluar</h4>
                     </div>
                     <div class="card-body">
-                        <table id="example2" class="table table-bordered table-striped">
+                        <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>Bil</th>
@@ -138,7 +138,7 @@
                         </table>
 
                     </div>
-                    <!-- /.card-body -->
+                    
                 </div>
 
             </div>
@@ -149,9 +149,9 @@
                     <div class="card-header">
                         <h4>Senarai keseluruhan pelajar dilarang keluar</h4>
                     </div>
-                    <!-- /.card-header -->
+                    
                     <div class="card-body">
-                        <table id="example1" class="table table-bordered table-striped">
+                        <table id="example2" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>Bil</th>
@@ -183,7 +183,7 @@
                         </table>
 
                     </div>
-                    <!-- /.card-body -->
+                     
                 </div>
 
 
