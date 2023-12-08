@@ -134,7 +134,7 @@
 
                         </td>
                         <td>{{$pelajar->catatan}}</td>
-                        <td>{{$pelajar->pelulus_id}}</td>
+                        <td>{{$pelajar->pelulus->name}}</td>
                         <td>{{$pelajar->created_at}}</td>
 
                     </tr>
