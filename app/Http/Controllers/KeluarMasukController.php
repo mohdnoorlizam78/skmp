@@ -21,9 +21,19 @@ class KeluarMasukController extends Controller
     {
         // paparkan rekod keluar masuk
         $dibenarkanKeluarMasuk = KeluarMasuk::orderBy('created_at', 'desc')->get(); //dibenarkan keluar
-        $tidakBolehKeluarMasuk = KeluarMasuk::where('statuskebenaran_id', '3')->get();
+        // $tidakBolehKeluarMasuk = KeluarMasuk::where('statuskebenaran_id', '3')
+        //     ->where('statuskebenaran_id', '4')
+        //     ->get();
+        $data = KeluarMasuk::all();
+        $permohonan_ditolak = KeluarMasuk::where('statuskebenaran_id', '3')->get();
+        $permohonan_digantung = KeluarMasuk::where('statuskebenaran_id', '4')->get();
 
-        return view('keluarmasuk.index', compact('dibenarkanKeluarMasuk', 'tidakBolehKeluarMasuk'));
+        return view('keluarmasuk.index', compact(
+            'dibenarkanKeluarMasuk',
+            'data',
+            'permohonan_ditolak',
+            'permohonan_digantung'
+        ));
     }
 
     public function rekodpenuh()
