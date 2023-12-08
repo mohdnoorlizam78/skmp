@@ -51,6 +51,10 @@ class KeluarMasuk extends Model
     {
         return $this->belongsTo(User::class, 'pegawaikeluar_id');
     }
+    public function pelulus(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'pelulus_id');
+    }
     public function dibenarkan(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
