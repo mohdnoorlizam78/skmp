@@ -38,7 +38,7 @@ class LoginController extends Controller
             if (Auth::user()->peranan_id == "1") {
                 return redirect('dashboard');
             } elseif (Auth::user()->peranan_id == "2") {
-                return redirect('/keluarmasuk/semakpermohonan');
+                return redirect('dashboard');
             } elseif (Auth::user()->peranan_id == "3") {
                 return redirect('keluarmasuk');
             } else
@@ -50,12 +50,12 @@ class LoginController extends Controller
     public function pentadbir()
     {
         // paparkan log masuk
-        return view('kursus');
+        return view('dashboard');
     }
     public function warden()
     {
         // paparkan log masuk
-        return view('/keluarmasuk/semakpermohonan');
+        return view('dashboard');
     }
     public function pengawal()
     {
