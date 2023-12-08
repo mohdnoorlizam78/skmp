@@ -35,7 +35,6 @@
 </div>
 @endif
 
-
 <div class="container-fluid">
 
     <div class="card-header p-2">
@@ -62,6 +61,7 @@
                                     <th>Bil</th>
                                     <th>Nama Pelajar</th>
                                     <th>NDP</th>
+                                    <th>Tujuan</th>
                                     <th>Tarikh Keluar</th>
                                     <th>Masa Keluar</th>
                                     <th>Tarikh Masuk</th>
@@ -75,6 +75,7 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$keluarmasuk->dibenarkan->name}}</td>
                                     <td>{{$keluarmasuk->ndp_id}}</td>
+                                    <td>{{$keluarmasuk->tujuanmohon->nama_tujuan}}</td>
                                     <td>
                                         @if($keluarmasuk->tarikh_keluar == Null)
                                         <a href="{{ route('keluarmasuk.editkeluar', $keluarmasuk->id) }}" class="btn btn-warning btn-sm">Sahkan keluar</a>
@@ -141,27 +142,45 @@
                                 <tr>
                                     <th>Bil</th>
                                     <th>Nama Pelajar</th>
-                                    <th></th>
+                                    <th>NDP</th>
+                                    <th>Status</th>
                                 </tr>
 
                             </thead>
                             <tbody>
-                                @foreach($tidakBolehKeluarMasuk as $keluarmasuk )
+                                
+                               @foreach($permohonan_ditolak as $status )
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>
-                                        <a href="{{route('pelajar.info', $keluarmasuk->id) }}" class="btn btn-warning btn-sm"> {{$keluarmasuk->user->name}}</a>
+                                        <a href="{{route('pelajar.info', $keluarmasuk->id) }}" class="btn btn-warning btn-sm"> {{$status->user->name}}</a>
                                     </td>
-                                    <td> <span class="badge badge-danger">Tidak dibenarkan keluar</span></td>
-
+                                    <td>{{$status->ndp_id}}</td>
+                                    <td>
+                                        <span class="badge badge-danger">Ditolak</span>
+                                     </td>
                                 </tr>
-                                @endforeach
+                                 @endforeach
+                                 @foreach($permohonan_digantung as $status )
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>
+                                        <a href="{{route('pelajar.info', $keluarmasuk->id) }}" class="btn btn-warning btn-sm"> {{$status->user->name}}</a>
+                                    </td>
+                                    <td>{{$status->ndp_id}}</td>
+                                    <td>
+                                        <span class="badge badge-danger">Digantung</span>
+                                    </td>
+                                </tr>
+                                 @endforeach
+
                             </tbody>
                             <tfoot>
                                 <tr>
                                     <th>Bil</th>
-                                    <th>Nama Kursus</th>
-                                    <th></th>
+                                    <th>Nama pelajar</th>
+                                    <th>NDP</th>
+                                    <th>Status</th>
 
                                 </tr>
                             </tfoot>
