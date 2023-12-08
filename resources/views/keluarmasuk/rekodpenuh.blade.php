@@ -59,6 +59,7 @@
                                     <th>Bil</th>
                                     <th>Nama Pelajar</th>
                                     <th>NDP</th>
+                                    <th>Tujuan</th>
                                     <th>Tarikh Keluar</th>
                                     <th>Masa Keluar</th>
                                     <th>Pegawal sahkan keluar</th>
@@ -74,6 +75,7 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$keluarmasuk->dibenarkan->name}}</td>
                                     <td>{{$keluarmasuk->ndp_id}}</td>
+                                    <td>{{$keluarmasuk->tujuanmohon->nama_tujuan}}</td>
                                     <td>
                                         @if($keluarmasuk->tarikh_keluar == Null)
                                         <a href="{{ route('keluarmasuk.editkeluar', $keluarmasuk->id) }}" class="btn btn-warning btn-sm">Sahkan keluar</a>
