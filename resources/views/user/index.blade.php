@@ -62,7 +62,7 @@
                             @foreach($senaraiPengguna as $pengguna )
                             <tr>
                                 <td>{{$loop->iteration}}</td>
-                                <td> {{$pengguna->name}} </td>
+                                <td>{{$pengguna->name}}  </td>
                                 <td>{{$pengguna->peranan->nama_peranan}}</td>
                                 <td>{{$pengguna->email}}</td>
                                 <td>{{$pengguna->password}}</td>
@@ -77,13 +77,13 @@
                                     <div class="row">
 
                                         <a href="{{ route('user.edit', $pengguna->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                        &nbsp;
+                                        {{-- &nbsp;
 
                                         <form action="{{ route('user.destroy', $pengguna->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Adakah anda pasti untuk buang?')">Buang</button>
-                                        </form>
+                                        </form> --}}
 
                                     </div>
 
@@ -112,6 +112,8 @@
                             <form method="POST" action="{{ route('user.store') }}">
                                 @csrf
                                 <input type="hidden" class="form-control" id="status" name="status" value="Aktif">
+
+                                <input type="text" class="form-control" id="id" name="id" value="{{$latestId+1}}">
 
                                 <div class="mb-3">
                                     <label for="name" class="col-form-label">Nama pengguna:</label>
