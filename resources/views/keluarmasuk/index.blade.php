@@ -39,8 +39,8 @@
 
     <div class="card-header p-2">
         <ul class="nav nav-pills">
-            <li class="nav-item"><a class="nav-link active" href="#dibenarkan" data-toggle="tab">Dibenarkan</a></li>
-            <li class="nav-item"><a class="nav-link" href="#tidakdibenarkan" data-toggle="tab">Tidak dibenarkan</a></li>
+            <li class="nav-item"><a class="nav-link active" href="#dibenarkan" data-toggle="tab">DIBENARKAN</a></li>
+            <li class="nav-item"><a class="nav-link" href="#tidakdibenarkan" data-toggle="tab">TIDAK DIBENARKAN</a></li>
 
         </ul>
     </div>
@@ -50,8 +50,8 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h4>Senarai pelajar dibenarkan keluar pada : <?php date_default_timezone_set('Asia/Kuala_Lumpur');
-                                                                        echo date('Y-m-d');  ?></h4>
+                        {{-- <h4>Senarai pelajar dibenarkan keluar pada : <?php //date_default_timezone_set('Asia/Kuala_Lumpur');
+                                                                        //echo date('Y-m-d');  ?></h4> --}}
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -62,6 +62,7 @@
                                     <th>Nama Pelajar</th>
                                     <th>NDP</th>
                                     <th>Tujuan</th>
+                                    <th>Tarik Mohon Keluar</th>
                                     <th>Tarikh Keluar</th>
                                     <th>Masa Keluar</th>
                                     <th>Tarikh Masuk</th>
@@ -76,6 +77,7 @@
                                     <td>{{$keluarmasuk->dibenarkan->name}}</td>
                                     <td>{{$keluarmasuk->ndp_id}}</td>
                                     <td>{{$keluarmasuk->tujuanmohon->nama_tujuan}}</td>
+                                    <td>{{$keluarmasuk->created_at}}</td>
                                     <td>
                                         @if($keluarmasuk->tarikh_keluar == Null)
                                         <a href="{{ route('keluarmasuk.editkeluar', $keluarmasuk->id) }}" class="btn btn-warning btn-sm">Sahkan keluar</a>
@@ -120,8 +122,8 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h4>Senarai pelajar dilarang keluar pada : <?php date_default_timezone_set('Asia/Kuala_Lumpur');
-                                                                    echo date('Y-m-d');  ?></h4>
+                        {{-- <h4>Senarai pelajar dilarang keluar pada : <?php //date_default_timezone_set('Asia/Kuala_Lumpur');
+                                                                    //echo date('Y-m-d');  ?></h4> --}}
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -131,7 +133,9 @@
                                     <th>Bil</th>
                                     <th>Nama Pelajar</th>
                                     <th>NDP</th>
+                                    <th>Tarikh Mohon Keluar</th>
                                     <th>Status</th>
+                                    <th>Catatan</th>
                                 </tr>
 
                             </thead>
@@ -144,11 +148,14 @@
                                         <a href="{{route('pelajar.info', $keluarmasuk->id) }}" class="btn btn-warning btn-sm"> {{$status->user->name}}</a>
                                     </td>
                                     <td>{{$status->ndp_id}}</td>
+                                    <td>{{$status->created_at}}</td>
                                     <td>
                                         <span class="badge badge-danger">Ditolak</span>
                                      </td>
+                                     <td>{{$status->catatan}}</td>
                                 </tr>
                                  @endforeach
+
                                  @foreach($permohonan_digantung as $status )
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
@@ -156,14 +163,15 @@
                                         <a href="{{route('pelajar.info', $keluarmasuk->id) }}" class="btn btn-warning btn-sm"> {{$status->user->name}}</a>
                                     </td>
                                     <td>{{$status->ndp_id}}</td>
+                                    <td>{{$status->created_at}}</td>
                                     <td>
                                         <span class="badge badge-danger">Digantung</span>
                                     </td>
+                                    <td>{{$status->catatan}}</td>
                                 </tr>
                                  @endforeach
 
                             </tbody>
-                            
                         </table>
 
                     </div>
