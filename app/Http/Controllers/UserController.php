@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\KeluarMasuk;
+use App\Models\Pelajar;
 use App\Models\User;
 use App\Models\Peranan;
 use App\Models\Tujuan;
 use Illuminate\Http\Request;
 use Hash;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash as FacadesHash;
 use Illuminate\View\View;
 
@@ -20,12 +22,12 @@ class UserController extends Controller
     public function index()
     {
         //paparkan senarai pengguna
-        $senaraiPengguna = User::all();
+        $senaraiPengguna = User::orderBy('id', 'DESC')->get();
         $senaraiPeranan = Peranan::all();
+        $latestId = User::latest('id')->value('id');
 
-        return view('user.index', compact('senaraiPengguna', 'senaraiPeranan'));
+        return view('user.index', compact('senaraiPengguna', 'senaraiPeranan', 'latestId'));
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -62,14 +64,20 @@ class UserController extends Controller
         ]);
 
         $data = [
+            //'id' => $request->id,
             'name' => $request->name,
             'email' => $request->email,
             'password' => FacadesHash::make($request->password),
             'peranan_id' => $request->peranan_id,
             'status' => $request->status
         ];
-
         User::create($data);
+
+        $validatedData = new Pelajar();
+        $nextId = User::max('id');
+        $validatedData->user_id = $nextId;
+        $validatedData->nama_pelajar = $request->input('name');
+        $validatedData->save();
 
         //return view('tujuan.index', compact('simpanData'))->with('success', 'Rekod berjaya disimpan.');
         return redirect('user')->with('success', 'Rekod berjaya disimpan');
@@ -129,7 +137,9 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // buang rekod
+        User::destroy($id);
+        return redirect('user');
     }
     public function infopengguna(string $id)
     {
