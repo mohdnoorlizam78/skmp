@@ -96,7 +96,7 @@
 
                     <div class="card-footer">
                         <button type="submit" class="btn btn-warning">Kemas kini</button>
-                        <a href="{{ url()->previous() }}" class="btn btn-primary">Kembali</a>
+                        <a href="{{route('pelajar.index')}}" class="btn btn-primary">Batal</a>
                     </div>
                 </form>
             </div>
