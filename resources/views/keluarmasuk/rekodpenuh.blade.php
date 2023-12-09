@@ -127,20 +127,7 @@
                                 </tr>
                                 @endforeach
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>Bil</th>
-                                    <th>Nama Pelajar</th>
-                                    <th>NDP</th>
-                                    <th>Tarikh Keluar</th>
-                                    <th>Masa Keluar</th>
-                                    <th>Pegawal sahkan keluar</th>
-                                    <th>Tarikh Masuk</th>
-                                    <th>Masa Masuk</th>
-                                    <th>Pengawal sahkan masuk</th>
-                                    <th>Status Masuk</th>
-                                </tr>
-                            </tfoot>
+                            
                         </table>
                     </div>
                 </div>
@@ -175,14 +162,7 @@
                                 </tr>
                                 @endforeach
                             </tbody>
-                            <tfoot>
-                                <tr>
-                                    <th>Bil</th>
-                                    <th>Nama Kursus</th>
-                                    <th></th>
-
-                                </tr>
-                            </tfoot>
+                            
                         </table>
 
                     </div>
