@@ -40,9 +40,16 @@ class KeluarMasukController extends Controller
     {
         // paparkan rekod keseluruhan keluar masuk
         $dataKeluarMasuk = KeluarMasuk::orderBy('created_at', 'desc')->get();
-        $tidakBolehKeluarMasuk = KeluarMasuk::where('statuskebenaran_id', '3')->get();
+        //$tidakBolehKeluarMasuk = KeluarMasuk::where('statuskebenaran_id', '3')->get();
+        $permohonan_ditolak = KeluarMasuk::where('statuskebenaran_id', '3')->get();
+        $permohonan_digantung = KeluarMasuk::where('statuskebenaran_id', '4')->get();
 
-        return view('keluarmasuk.rekodpenuh', compact('dataKeluarMasuk', 'tidakBolehKeluarMasuk'));
+        return view('keluarmasuk.rekodpenuh', compact(
+            'dataKeluarMasuk',
+            // 'tidakBolehKeluarMasuk',
+            'permohonan_ditolak',
+            'permohonan_digantung'
+        ));
     }
 
     public function mohonkeluar(Request $request)
