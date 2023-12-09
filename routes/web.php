@@ -57,6 +57,7 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/pelajar/update/{id}', [PelajarController::class, 'update'])->name('pelajar.update')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
     Route::delete('/pelajar/destroy/{id}', [PelajarController::class, 'destroy'])->name('pelajar.destroy')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
     Route::get('/pelajar/info/{id}', [PelajarController::class, 'info'])->name('pelajar.info');
+    Route::post('/pelajar/storepengguna', [PelajarController::class, 'storePengguna'])->name('pelajar.storePengguna')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
 
     //permohonan pelajar
     Route::get('/statuskebenaran/', [StatusKebenaranController::class, 'index'])->name('statuskebenaran.index')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
