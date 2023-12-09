@@ -182,13 +182,102 @@
       ]
     });
 
-    $("#Kursus").DataTable({
-     
+    $("#tableUser").DataTable({
+      "language": {
+        "url": '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Malay.json',
+    },
       "responsive": true,
       "lengthChange": false,
       "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example3_wrapper .col-md-6:eq(0)');
+      dom: 'lBfrtip',
+        buttons: [
+          
+            //'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],
+      "buttons": [
+        
+        "csv", "excel",
+        { extend: 'pdf',
+              orientation: 'landscape',
+              pageSize: 'LEGAL',
+              title: 'Rekod Pengguna' },
+        { extend: 'copy', text: 'Salin' },
+        { extend: 'print',
+              orientation: 'landscape',
+              pageSize: 'LEGAL',
+              title: 'Rekod Pengguna',
+              text: 'Cetak' },
+        { extend: 'colvis', text: 'Paparan Kolum' },
+      ]
+    });
+
+    $("#tableSesi").DataTable({
+      "language": {
+        "url": '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Malay.json',
+    },
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
+      dom: 'lBfrtip',
+        buttons: [
+          
+            //'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],
+      "buttons": [
+        
+        "csv", "excel",
+        { extend: 'pdf',
+              orientation: 'landscape',
+              pageSize: 'LEGAL',
+              title: 'Senarai Sesi' },
+        { extend: 'copy', text: 'Salin' },
+        { extend: 'print',
+              orientation: 'landscape',
+              pageSize: 'LEGAL',
+              title: 'Senarai Sesi',
+              text: 'Cetak' },
+        { extend: 'colvis', text: 'Paparan Kolum' },
+      ]
+    });
+
+    $("#tableTujuan").DataTable({
+      "language": {
+        "url": '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Malay.json',
+    },
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
+      dom: 'lBfrtip',
+        buttons: [
+          
+            //'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],
+      "buttons": [
+        
+        "csv", "excel",
+        { extend: 'pdf',
+              orientation: 'landscape',
+              pageSize: 'LEGAL',
+              title: 'Senarai Tujuan' },
+        { extend: 'copy', text: 'Salin' },
+        { extend: 'print',
+              orientation: 'landscape',
+              pageSize: 'LEGAL',
+              title: 'Senarai Tujuan',
+              text: 'Cetak' },
+        { extend: 'colvis', text: 'Paparan Kolum' },
+      ]
+    });    
+
   });
  
 </script>
