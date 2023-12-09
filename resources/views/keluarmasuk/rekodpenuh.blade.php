@@ -40,8 +40,8 @@
 
     <div class="card-header p-2">
         <ul class="nav nav-pills">
-            <li class="nav-item"><a class="nav-link active" href="#dibenarkan" data-toggle="tab">Dibenarkan</a></li>
-            <li class="nav-item"><a class="nav-link" href="#tidakdibenarkan" data-toggle="tab">Tidak dibenarkan</a></li>
+            <li class="nav-item"><a class="nav-link active" href="#dibenarkan" data-toggle="tab">DIBENARKAN</a></li>
+            <li class="nav-item"><a class="nav-link" href="#tidakdibenarkan" data-toggle="tab">TIDAK DIBENARKAN</a></li>
 
         </ul>
     </div>
@@ -53,13 +53,14 @@
                         <h4>Senarai keseluruhan pelajar dibenarkan keluar</h4>
                     </div>
                     <div class="card-body">
-                        <table id="example1" class="table table-bordered table-striped">
+                        <table id="tableRekodPenuh" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>Bil</th>
                                     <th>Nama Pelajar</th>
                                     <th>NDP</th>
                                     <th>Tujuan</th>
+                                    <th>Tarikh Mohon Keluar</th>
                                     <th>Tarikh Keluar</th>
                                     <th>Masa Keluar</th>
                                     <th>Pegawal sahkan keluar</th>
@@ -76,6 +77,7 @@
                                     <td>{{$keluarmasuk->dibenarkan->name}}</td>
                                     <td>{{$keluarmasuk->ndp_id}}</td>
                                     <td>{{$keluarmasuk->tujuanmohon->nama_tujuan}}</td>
+                                    <td>{{$keluarmasuk->created_at}}</td>
                                     <td>
                                         @if($keluarmasuk->tarikh_keluar == Null)
                                         <a href="{{ route('keluarmasuk.editkeluar', $keluarmasuk->id) }}" class="btn btn-warning btn-sm">Sahkan keluar</a>
@@ -141,26 +143,46 @@
                     </div>
                     
                     <div class="card-body">
-                        <table id="example2" class="table table-bordered table-striped">
+                        <table id="tableRekodKeseluruhanDitolak" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>Bil</th>
                                     <th>Nama Pelajar</th>
-                                    <th></th>
+                                    <th>NDP</th>
+                                    <th>Tarikh Mohon Keluar</th>
+                                    <th>Status</th>
                                 </tr>
 
                             </thead>
                             <tbody>
-                                @foreach($tidakBolehKeluarMasuk as $keluarmasuk )
+                                @foreach($permohonan_ditolak as $status )
                                 <tr>
                                     <td>{{$loop->iteration}}</td>
                                     <td>
-                                        <a href="{{route('pelajar.info', $keluarmasuk->id) }}" class="btn btn-warning btn-sm"> {{$keluarmasuk->user->name}}</a>
+                                        <a href="{{route('pelajar.info', $keluarmasuk->id) }}" class="btn btn-warning btn-sm"> {{$status->user->name}}</a>
                                     </td>
-                                    <td> <span class="badge badge-danger">Tidak dibenarkan keluar</span></td>
-
+                                    <td>{{$status->ndp_id}}</td>
+                                    <td>{{$status->created_at}}</td>
+                                    <td>
+                                        <span class="badge badge-danger">Ditolak</span>
+                                     </td>
                                 </tr>
-                                @endforeach
+                                 @endforeach
+                                 @foreach($permohonan_digantung as $status )
+                                <tr>
+                                    <td>{{$loop->iteration}}</td>
+                                    <td>
+                                        <a href="{{route('pelajar.info', $keluarmasuk->id) }}" class="btn btn-warning btn-sm"> {{$status->user->name}}</a>
+                                    </td>
+                                    <td>{{$status->ndp_id}}</td>
+                                    <td>{{$status->created_at}}</td>
+                                    <td>
+                                        <span class="badge badge-danger">Digantung</span>
+                                    </td>
+                                </tr>
+                                 @endforeach
+
+                            
                             </tbody>
                             
                         </table>
