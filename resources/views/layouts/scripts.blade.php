@@ -22,21 +22,168 @@
 
 <script>
   $(function() {
-    $("#example1").DataTable({
+    $("#tablePelajar").DataTable({
+      "language": {
+        "url": '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Malay.json',
+    },
       "responsive": true,
       "lengthChange": false,
       "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+      dom: 'lBfrtip',
+        buttons: [
+          
+            //'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],
+      "buttons": [
+        
+        "csv", "excel",
+        { extend: 'pdf',
+              orientation: 'landscape',
+              pageSize: 'LEGAL',
+              title: 'Rekod Senarai Pelajar' },
+        { extend: 'copy', text: 'Salin' },
+        { extend: 'print',
+              orientation: 'landscape',
+              pageSize: 'LEGAL',
+              title: 'Rekod Senarai Pelajar',
+              text: 'Cetak' },
+        { extend: 'colvis', text: 'Paparan Kolum' },
+      ]
+    });
 
-    $("#example2").DataTable({
+    $("#tableMohon").DataTable({
+      "language": {
+        "url": '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Malay.json',
+    },
       "responsive": true,
       "lengthChange": false,
       "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example2_wrapper .col-md-6:eq(0)');
+      dom: 'lBfrtip',
+        buttons: [
+          
+            //'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],
+      "buttons": [
+        
+        "csv", "excel",
+        { extend: 'pdf',
+              orientation: 'landscape',
+              pageSize: 'LEGAL',
+              title: 'Rekod Permohonan Keluar Pelajar' },
+        { extend: 'copy', text: 'Salin' },
+        { extend: 'print',
+              orientation: 'landscape',
+              pageSize: 'LEGAL',
+              title: 'Rekod Permohonan Keluar Pelajar',
+              text: 'Cetak' },
+        { extend: 'colvis', text: 'Paparan Kolum' },
+      ]
+    });
+
+    $("#tableRekodPenuh").DataTable({
+      "language": {
+        "url": '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Malay.json',
+    },
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
+      dom: 'lBfrtip',
+        buttons: [
+          
+            //'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],
+      "buttons": [
+        
+        "csv", "excel",
+        { extend: 'pdf',
+              orientation: 'landscape',
+              pageSize: 'LEGAL',
+              title: 'Rekod Keseluruhan Pelajar Keluar Masuk' },
+        { extend: 'copy', text: 'Salin' },
+        { extend: 'print',
+              orientation: 'landscape',
+              pageSize: 'LEGAL',
+              title: 'Rekod Keseluruhan Pelajar Keluar Masuk',
+              text: 'Cetak' },
+        { extend: 'colvis', text: 'Paparan Kolum' },
+      ]
+    });
+
+    $("#tableRekodKeseluruhanDitolak").DataTable({
+      "language": {
+        "url": '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Malay.json',
+    },
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
+      dom: 'lBfrtip',
+        buttons: [
+          
+            //'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],
+      "buttons": [
+        
+        "csv", "excel",
+        { extend: 'pdf',
+              orientation: 'landscape',
+              pageSize: 'LEGAL',
+              title: 'Rekod Keseluruhan Permohonan Keluar Pelajar Ditolak' },
+        { extend: 'copy', text: 'Salin' },
+        { extend: 'print',
+              orientation: 'landscape',
+              pageSize: 'LEGAL',
+              title: 'Rekod Keseluruhan Permohonan Keluar Pelajar Ditolak',
+              text: 'Cetak' },
+        { extend: 'colvis', text: 'Paparan Kolum' },
+      ]
+    });
 
     $("#tableKursus").DataTable({
+      "language": {
+        "url": '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Malay.json',
+    },
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
+      dom: 'lBfrtip',
+        buttons: [
+          
+            //'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],
+      "buttons": [
+        
+        "csv", "excel",
+        { extend: 'pdf',
+              orientation: 'landscape',
+              pageSize: 'LEGAL',
+              title: 'Rekod Pelajar Keluar Masuk' },
+        { extend: 'copy', text: 'Salin' },
+        { extend: 'print',
+              orientation: 'landscape',
+              pageSize: 'LEGAL',
+              title: 'Rekod Pelajar Keluar Masuk',
+              text: 'Cetak' },
+        { extend: 'colvis', text: 'Paparan Kolum' },
+      ]
+    });
+
+    $("#Kursus").DataTable({
+     
       "responsive": true,
       "lengthChange": false,
       "autoWidth": false,
