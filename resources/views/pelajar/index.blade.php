@@ -76,9 +76,21 @@
                                     <a href="{{ route('pelajar.info', $pelajar->id) }}">{{$pelajar->nama_pelajar}}</a>
                                     
                                 </td>
-                                <td>{{$pelajar->kursus->nama_kursus}}</td>
+                                <td>
+                                    @if($pelajar->kursus_id == null)
+                                    <p></p>
+                                    @else
+                                    {{$pelajar->kursus->nama_kursus}}
+                                    @endif
+                                </td>
                                 <td>{{$pelajar->no_ndp}}</td>
-                                <td>{{$pelajar->sesimasuk->nama_sesi}}</td>
+                                <td>
+                                    @if($pelajar->sesimasuk_id == null)
+                                    <p></p>
+                                    @else
+                                    {{$pelajar->sesimasuk->nama_sesi}}
+                                    @endif
+                                </td>
                                 <td>{{$pelajar->alamat_rumah}}</td>
                                 <td>{{$pelajar->alamat_lain}}</td>
                                 <td>{{$pelajar->no_tel}}</td>
@@ -95,13 +107,13 @@
                                 <td>
                                     <div class="row">
 
-                                        <a href="{{ route('pelajar.edit', $pelajar->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                                        &nbsp;
+                                        <a href="{{ route('pelajar.edit', $pelajar->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                        {{-- &nbsp;
                                         <form action="{{ route('pelajar.destroy', $pelajar->id) }}" method="post">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Adakah anda pasti untuk buang?')">Buang</button>
-                                        </form>
+                                        </form> --}}
 
                                     </div>
 
