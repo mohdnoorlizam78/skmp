@@ -111,7 +111,7 @@
                         <div class="modal-body">
                             <form method="POST" action="{{ route('user.store') }}">
                                 @csrf
-                                <input type="hidden" class="form-control" id="status" name="status" value="Aktif">
+                                <input type="hidden" class="form-control" id="status" name="status" value="1">
 
                                 <input type="text" class="form-control" id="id" name="id" value="{{$latestId+1}}">
 
