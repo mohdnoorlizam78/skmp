@@ -32,7 +32,11 @@
                         <div class="form-group row">
                             <label for="kursus_id" class="col-sm-2 col-form-label">Kursus</label>
                             <div class="col-sm-10">
-                                <input type="text" name="kursus_id" class="form-control" id="kursus_id" value="{{$kemaskiniPelajar->kursus_id}}">
+                                <select id="kursus_id" name="kursus_id" class="form-control">
+                                    @foreach ($senaraiKursus as $kursus)
+                                    <option value="{{ $kursus->id }}" {{$kemaskiniPelajar->kursus_id == $kursus->id ? 'selected' : '' }}>{{ $kursus->nama_kursus }}</option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                         <div class="form-group row">
@@ -88,17 +92,6 @@
                             </div>
 
                         </div>
-                        <div class="form-group row">
-                            <label for="kursus_id" class="col-sm-2 col-form-label">Kursus</label>
-                            <div class="col-sm-10">
-                                <select id="kursus_id" name="kursus_id" class="form-control">
-                                    @foreach ($senaraiKursus as $kursus)
-                                    <option value="{{ $kursus->id }}" {{$kemaskiniPelajar->kursus_id == $kursus->id ? 'selected' : '' }}>{{ $kursus->nama_kursus }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
-                        </div>
-
                     </div>
 
                     <div class="card-footer">
