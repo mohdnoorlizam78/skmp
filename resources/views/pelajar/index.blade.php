@@ -42,10 +42,10 @@
 
             <div class="card">
                 <div class="card-header">
-                    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-sm">
-                        Rekod Baru
-                    </button> -->
-                    <a href="{{ route('pelajar.create') }}" class="btn btn-primary">Tambah pelajar</a>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-sm">
+                        Tambah pelajar
+                    </button>
+                    {{-- <a href="{{ route('pelajar.create') }}" class="btn btn-primary">Tambah pelajar</a> --}}
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -130,93 +130,56 @@
             </div>
             <!-- /.card -->
 
-            <!-- 
             <div class="modal fade" id="modal-sm">
-
                 <div class="modal-dialog modal-lg">
-
                     <div class="modal-content">
                         <div class="modal-header">
                             <h4 class="modal-title">Tambah pelajar baru</h4>
-
                             <button type="button" class="close" data-dismiss="modal" aria-label="Tutup">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form method="POST" action="{{ route('pelajar.store') }}">
+                            <form method="POST" action="{{ route('pelajar.storePengguna') }}">
                                 @csrf
-                                <input type="text" value="13" name="user_id">
+                                <input type="hidden" class="form-control" id="status" name="status" value="1">
+                                <input type="hidden" class="form-control" id="status" name="peranan_id" value="4">
+                                <input type="hidden" class="form-control" id="id" name="id" value="{{$latestId+1}}">
 
                                 <div class="mb-3">
-                                    <label for="nama_pelajar" class="col-form-label">Nama pelajar:</label>
-                                    <input type="text" class="form-control" id="nama_pelajar" name="nama_pelajar" required>
+                                    <label for="name" class="col-form-label">Nama pengguna:</label>
+                                    <input type="text" class="form-control" id="name" name="name" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="kursus_id" class="col-sm-2 col-form-label">Kursus</label>
-                                    <select id="kursus_id" name="kursus_id" class="form-control" required>
-                                        <option value="">-- Pilih Kursus --</option>
-                                        @foreach ($senaraiKursus as $kursus)
-                                        <option value="{{$kursus->id}}" {{ old('kursus_id') == $kursus->id ? 'selected' : null }}>{{$kursus->nama_kursus}}</option>
+                                    <label for="email" class="col-form-label">Emel:</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="col-form-label">Kata laluan:</label>
+                                    <input type="password" class="form-control" id="password" name="password" required>
+                                </div>
+                                {{-- <div class="mb-3">
+                                    <label for="peranan_id" class="col-sm-2 col-form-label">Peranan</label>
+                                    <select id="peranan_id" name="peranan_id" class="form-control">
+                                        <option value="">-- Pilih peranan --</option>
+                                        @foreach ($senaraiPeranan as $peranan)
+                                        <option value="{{$peranan->id}}" {{ ('peranan_id') == $peranan->id ? 'selected' : null }}>{{$peranan->nama_peranan}}</option>
                                         @endforeach
                                     </select>
 
-                                </div>
-                                <dvi class="mb-3">
-                                    <label for="no_ndp" class="col-sm-2 col-form-label">NDP</label>
-                                    <input type="text" name="no_ndp" class="form-control" id="no_ndp" required>
-                                </dvi>
-                                <div class="mb-3">
-                                    <label for="semester" class="col-sm-2 col-form-label">Semester</label>
-                                    <input type="text" name="semester" class="form-control" id="semester" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="alamat_rumah" class="col-sm-2 col-form-label">Alamat rumah</label>
-                                    <input type="text" name="alamat_rumah" class="form-control" id="alamat_rumah">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="alamat_lain" class="col-sm-2 col-form-label">Alamat lain</label>
-                                    <input type="text" name="alamat_lain" class="form-control" id="alamat_lain">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="no_tel" class="col-sm-2 col-form-label">No. Tel. </label>
-                                    <input type="text" name="no_tel" class="form-control" id="no_tel" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="no_tel_penjaga" class="col-sm-2 col-form-label">No. Tel. Penjaga</label>
-                                    <input type="text" name="no_tel_penjaga" class="form-control" id="no_tel_penjaga">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="status" class="col-sm-2 col-form-label">Status</label>
+                                </div> --}}
 
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="status" id="inlineRadio1" value="Aktif">
-                                        <label class="form-check-label" for="inlineRadio1">Aktif</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="status" id="inlineRadio2" value="Berhenti">
-                                        <label class="form-check-label" for="inlineRadio2">Berhenti</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="status" id="inlineRadio3" value="Tangguh">
-                                        <label class="form-check-label" for="inlineRadio3">Tangguh</label>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="formFile" class="col-sm-2 col-form-label">Gambar pelajar</label>
-                                    <input class="form-control" type="file" id="gambar" name="gambar">
-                                </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
                             <button type="submit" class="btn btn-primary">Hantar</button>
                         </div>
                     </div>
-                     
-        </div>
-         
-    </div>
-    -->
+                    <!-- /.modal-content -->
+                </div>
+                <!-- /.modal-dialog -->
+            </div>
+
 
         </div>
         <!-- /.col -->
