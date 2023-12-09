@@ -77,6 +77,7 @@ class UserController extends Controller
         $nextId = User::max('id');
         $validatedData->user_id = $nextId;
         $validatedData->nama_pelajar = $request->input('name');
+        $validatedData->status = 1;
         $validatedData->save();
 
         //return view('tujuan.index', compact('simpanData'))->with('success', 'Rekod berjaya disimpan.');
