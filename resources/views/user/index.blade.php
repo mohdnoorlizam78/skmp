@@ -112,8 +112,7 @@
                             <form method="POST" action="{{ route('user.store') }}">
                                 @csrf
                                 <input type="hidden" class="form-control" id="status" name="status" value="1">
-
-                                <input type="text" class="form-control" id="id" name="id" value="{{$latestId+1}}">
+                                <input type="hidden" class="form-control" id="id" name="id" value="{{$latestId+1}}">
 
                                 <div class="mb-3">
                                     <label for="name" class="col-form-label">Nama pengguna:</label>
