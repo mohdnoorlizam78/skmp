@@ -21,8 +21,11 @@
                     <div class="form-group row">
                         <label for="kursus_id" class="col-sm-2 col-form-label">Kursus</label>
                         <div class="col-sm-10">
-                            <input type="text" readonly class="form-control-plaintext" id="kursus_id" value="{{$kemaskiniPelajar->kursus->nama_kursus}}">
-
+                            <input type="text" readonly name="nama_kursus" class="form-control-plaintext" id="nama_kursus" value="<?php 
+                            if($kemaskiniPelajar->kursus_id == null)
+                            echo "";
+                            else 
+                            echo $kemaskiniPelajar->kursus->nama_kursus; ?> ">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -34,7 +37,11 @@
                     <div class="form-group row">
                         <label for="sesimasuk_id" class="col-sm-2 col-form-label">Sesi Kemasukan</label>
                         <div class="col-sm-10">
-                            <input type="text" readonly name="sesimasuk_id" class="form-control-plaintext" id="sesimasuk_id" value="{{$kemaskiniPelajar->sesimasuk->nama_sesi}}">
+                            <input type="text" readonly name="sesimasuk_id" class="form-control-plaintext" id="sesimasuk_id" value="<?php 
+                            if($kemaskiniPelajar->sesimasuk_id == null)
+                            echo "";
+                            else 
+                            echo $kemaskiniPelajar->sesimasuk->nama_sesi; ?>">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -74,16 +81,11 @@
                         </div>
 
                     </div>
-                    <div class="form-group row">
-                        <label for="nama_kursus" class="col-sm-2 col-form-label">Kursus</label>
-                        <div class="col-sm-10">
-                            <input type="text" readonly name="nama_kursus" class="form-control-plaintext" id="nama_kursus" value="{{$kemaskiniPelajar->kursus->nama_kursus}}">
-                        </div>
-                    </div>
-
+                    
                 </div>
                 <div class="card-footer">
-                    <a href="{{ url()->previous() }}" class="btn btn-primary">Kembali</a>
+                    <a href="{{ route('pelajar.edit', $kemaskiniPelajar->id) }}" class="btn btn-warning">Edit</a>
+                    <a href="{{ route('pelajar.index') }}" class="btn btn-primary">Kembali</a>
                 </div>
             </div>
 
