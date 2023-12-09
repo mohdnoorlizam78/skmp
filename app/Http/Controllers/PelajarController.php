@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Pelajar;
 use App\Models\Kursus;
+use App\Models\Peranan;
 use App\Models\SesiMasuk;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash as FacadesHash;
 use Illuminate\Validation\Rule;
 
 class PelajarController extends Controller
@@ -20,7 +22,16 @@ class PelajarController extends Controller
         $senaraiPelajar = Pelajar::orderBy('created_at', 'DESC')->get();
         $senaraiKursus = Kursus::all();
         $sesiMasuk = SesiMasuk::all();
-        return view('pelajar.index', compact('senaraiPelajar', 'senaraiKursus', 'sesiMasuk'));
+        $senaraiPeranan = Peranan::all();
+        $latestId = User::latest('id')->value('id');
+
+        return view('pelajar.index', compact(
+            'senaraiPelajar',
+            'senaraiKursus',
+            'sesiMasuk',
+            'latestId',
+            'senaraiPeranan'
+        ));
         //return view('pelajar.index', ['senaraiPelajar' => $senaraiPelajar]);
     }
     public function info(Request $request, string $id)
@@ -86,6 +97,44 @@ class PelajarController extends Controller
 
         return view('pelajar.index', compact('formData'))->with('success', 'Rekod berjaya disimpan.');
         //return redirect(route('pelajar.index'))->with('success', 'Rekod berjaya disimpan');
+    }
+    public function storePengguna(Request $request)
+    {
+        //simpan data baru
+
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:8'
+        ], [
+            'name.required' => 'Nama wajib diisi',
+            'email.required' => 'Emel wajib diisi',
+            'email.email' => 'Emel yang dimasukkan tidak valid',
+            'email.unique' => 'Emel sudah digunakan, sila masukkan email yang lain',
+            'password.required' => 'Password wajib diisi',
+            'password.min' => 'Minimum katalaluan 8 karakter'
+        ]);
+
+        $data = [
+            //'id' => $request->id,
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => FacadesHash::make($request->password),
+            'peranan_id' => $request->peranan_id,
+            'status' => $request->status
+        ];
+        User::create($data);
+
+        $validatedData = new Pelajar();
+        $nextId = User::max('id');
+        $validatedData->user_id = $nextId;
+        $validatedData->nama_pelajar = $request->input('name');
+        $validatedData->status = 1;
+        $validatedData->save();
+
+
+
+        return redirect('pelajar')->with('success', 'Rekod berjaya disimpan');
     }
 
     /**
