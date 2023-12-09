@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pelajar;
 use App\Models\Kursus;
 use App\Models\SesiMasuk;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
 
@@ -16,7 +17,7 @@ class PelajarController extends Controller
     public function index()
     {
         // paparkan senarai pelajar
-        $senaraiPelajar = Pelajar::all();
+        $senaraiPelajar = Pelajar::orderBy('created_at', 'DESC')->get();
         $senaraiKursus = Kursus::all();
         $sesiMasuk = SesiMasuk::all();
         return view('pelajar.index', compact('senaraiPelajar', 'senaraiKursus', 'sesiMasuk'));
@@ -77,11 +78,14 @@ class PelajarController extends Controller
             'status' => $request->status,
 
         ];
+        $formData = $request->input('user_id');
+        // $validatedData = new User();
+        // $validatedData->user_id = $request->input('user_id');
 
         Pelajar::create($data);
 
-        //return view('tujuan.index', compact('simpanData'))->with('success', 'Rekod berjaya disimpan.');
-        return redirect(route('pelajar.index'))->with('success', 'Rekod berjaya disimpan');
+        return view('pelajar.index', compact('formData'))->with('success', 'Rekod berjaya disimpan.');
+        //return redirect(route('pelajar.index'))->with('success', 'Rekod berjaya disimpan');
     }
 
     /**
