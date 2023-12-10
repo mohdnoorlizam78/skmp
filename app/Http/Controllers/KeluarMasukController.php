@@ -99,18 +99,16 @@ class KeluarMasukController extends Controller
     public function semakPermohonan()
     {
         //paparkan status permohonan pelajar
-        $statusMohon = KeluarMasuk::orderBy('created_at', 'desc')->get();
+
         $senaraiTujuan = Tujuan::all();
-        $semakStatus = KeluarMasuk::where('statuskebenaran_id', '1')->get();
-        // $tiadaPermohonan =  KeluarMasuk::where('statuskebenaran_id', '2')
-        //     ->where('statuskebenaran_id', '3')
-        //     ->get();
+        $semakStatus = KeluarMasuk::orderBy('created_at', 'desc')
+            ->where('statuskebenaran_id', '1')
+            ->get();
 
         return view('keluarmasuk.semakpermohonan', compact(
             'statusMohon',
             'senaraiTujuan',
-            'semakStatus',
-            // 'tiadaPermohonan'
+            'semakStatus'
         ));
     }
     public function editmohon(string $id)
