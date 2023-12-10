@@ -40,21 +40,17 @@
                                 <th>Tujuan</th>
                                 <th>Destinasi</th>
                                 <th>Status</th>
-                                <th>Catatan Pegawai</th>
+                                {{-- <th>Catatan Pegawai</th>
                                 <th>Tarikh mohon</th>
-                                <th>Tarikh pengesahan</th>
+                                <th>Tarikh pengesahan</th> --}}
 
                             </tr>
 
                         </thead>
                         <tbody>
-                            {{-- @if ($tiadaPermohonan->isEmpty())
-                        @else
-                             --}}
-                            @foreach($statusMohon as $pelajar )
-
+                            @foreach($semakStatus as $pelajar )
                             <tr>
-
+                                
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$pelajar->user->name}}</td>
                                 <td>{{$pelajar->tujuanmohon->nama_tujuan}}</td>
@@ -71,14 +67,15 @@
                                     @endif
 
                                 </td>
-                                <td>{{$pelajar->catatan}}</td>
+                                {{-- <td>{{$pelajar->catatan}}</td>
                                 <td>{{$pelajar->created_at}}</td>
-                                <td>{{$pelajar->updated_at}}</td>
-
-
+                                <td>{{$pelajar->updated_at}}</td> --}}
+                             
                             </tr>
+                            
                             @endforeach
-                            {{-- @endif --}}
+                           
+                           
                         </tbody>
 
                     </table>
