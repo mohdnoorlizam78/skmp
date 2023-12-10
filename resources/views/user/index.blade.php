@@ -53,7 +53,7 @@
                                 <th>Nama pengguna</th>
                                 <th>Peranan</th>
                                 <th>Emel</th>
-                                <th>Kata laluan</th>
+                                {{-- <th>Kata laluan</th> --}}
                                 <th>status</th>
                                 <th></th>
                             </tr>
@@ -61,11 +61,12 @@
                         <tbody>
                             @foreach($senaraiPengguna as $pengguna )
                             <tr>
+                                
                                 <td>{{$loop->iteration}}</td>
-                                <td>{{$pengguna->name}}  </td>
+                                <td>{{$pengguna->name}}</td>
                                 <td>{{$pengguna->peranan->nama_peranan}}</td>
                                 <td>{{$pengguna->email}}</td>
-                                <td>{{$pengguna->password}}</td>
+                                {{-- <td>{{$pengguna->password}}</td> --}}
                                 <td>
                                     @if($pengguna->status == 0)
                                     Tidak aktif
@@ -91,6 +92,7 @@
 
                             </tr>
                             @endforeach
+
                         </tbody>
 
                     </table>
