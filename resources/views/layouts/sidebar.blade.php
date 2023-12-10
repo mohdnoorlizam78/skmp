@@ -107,20 +107,26 @@
 @endif
       </li>
 
-      @if(Auth()->user()->peranan_id == "1" || Auth()->user()->peranan_id == "2")
+      @if(Auth()->user()->peranan_id == "2")
       <li class="nav-header">PENYELENGGARAAN</li>
-      <li class="nav-item">
-        <a href="{{route('pelajar.index')}}" class="nav-link">
-          <i class="nav-icon fas fa-ellipsis-h"></i>
-          <p>Maklumat Pelajar</p>
-        </a>
-      </li>
+      
       <li class="nav-item">
         <a href="{{route('user.index')}}" class="nav-link">
           <i class="nav-icon fas fa-ellipsis-h"></i>
           <p>Maklumat Pengguna</p>
         </a>
       </li>
+      
+      @endif
+
+      @if(Auth()->user()->peranan_id == "1")
+      <li class="nav-item">
+        <a href="{{route('user.pentadbir')}}" class="nav-link">
+          <i class="nav-icon fas fa-ellipsis-h"></i>
+          <p>Maklumat Terperinci Pengguna</p>
+        </a>
+      </li>
+
       <li class="nav-item">
         <a href="{{route('kursus.index')}}" class="nav-link">
           <i class="nav-icon fas fa-file"></i>
@@ -139,8 +145,8 @@
           <p>Tujuan</p>
         </a>
       </li>
+      @endif
       
-@endif
       <li class="nav-item">
         <a href="{{route('logout')}}" class="nav-link">
           <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
