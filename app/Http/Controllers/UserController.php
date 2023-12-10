@@ -25,10 +25,35 @@ class UserController extends Controller
         $senaraiPengguna = User::orderBy('id', 'DESC')->get();
         $senaraiPeranan = Peranan::all();
         $latestId = User::latest('id')->value('id');
+        $senaraiWarden = User::orderBy('id', 'DESC')
+            ->where('peranan_id', 2)
+            ->get();
+        $senaraiPengawal = User::orderBy('id', 'DESC')
+            ->where('peranan_id', 3)
+            ->get();
+        $senaraiPelajar = User::orderBy('id', 'DESC')
+            ->where('peranan_id', 4)
+            ->get();
 
-        return view('user.index', compact('senaraiPengguna', 'senaraiPeranan', 'latestId'));
+        return view('user.index', compact(
+            'senaraiPengguna',
+            'senaraiPeranan',
+            'latestId',
+            'senaraiWarden',
+            'senaraiPengawal',
+            'senaraiPelajar'
+        ));
     }
 
+    public function pentadbir()
+    {
+        //paparkan senarai pengguna
+        $senaraiPengguna = User::orderBy('id', 'DESC')->get();
+        $senaraiPeranan = Peranan::all();
+        $latestId = User::latest('id')->value('id');
+
+        return view('user.pentadbir', compact('senaraiPengguna', 'senaraiPeranan', 'latestId'));
+    }
     /**
      * Show the form for creating a new resource.
      */
