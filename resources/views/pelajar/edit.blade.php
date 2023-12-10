@@ -27,7 +27,6 @@
                                     <option value="2" {{ $kemaskiniPelajar->jantina =='2' ? 'selected' : '' }}>Perempuan</option>
                                 </select>
                             </div>
-
                         </div>
                         <div class="form-group row">
                             <label for="kursus_id" class="col-sm-2 col-form-label">Kursus</label>
