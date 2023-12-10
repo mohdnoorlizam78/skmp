@@ -14,7 +14,7 @@
                     @method('patch')
                     <div class="card-body">
 
-                        <input type="text" class="form-control" id="catatan" name="pelulus_id" value="{{Auth()->user()->id}}">
+                        <input type="hidden" class="form-control" id="catatan" name="pelulus_id" value="{{Auth()->user()->id}}">
 
                         <div class="mb-3">
                             <label for="statuskebenaran_id" class="col-sm-2 col-form-label">Status</label>
