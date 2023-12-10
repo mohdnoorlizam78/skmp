@@ -158,6 +158,23 @@
                                     <label for="password" class="col-form-label">Kata laluan:</label>
                                     <input type="password" class="form-control" id="password" name="password" required>
                                 </div>
+                                <div class="mb-3">
+                                    <label for="jantina" class="col-form-label">Jantina</label>
+                                    <div class="col-sm-10">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="jantina" id="jantina" value="1">
+                                            <label class="form-check-label" for="jantina">
+                                                Lelaki
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="radio" name="jantina" id="statuskebenaran_id" value="2">
+                                            <label class="form-check-label" for="jantina">
+                                                Perempuan
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
                                 {{-- <div class="mb-3">
                                     <label for="peranan_id" class="col-sm-2 col-form-label">Peranan</label>
                                     <select id="peranan_id" name="peranan_id" class="form-control">
