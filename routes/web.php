@@ -93,6 +93,7 @@ Route::middleware(['auth'])->group(function () {
 
     //pengguna
     Route::get('/user', [UserController::class, 'index'])->name('user.index')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::get('/user/pentadbir', [UserController::class, 'pentadbir'])->name('user.pentadbir')->middleware(['tidakbolehAkses:2', 'tidakbolehAkses:3', 'tidakbolehAkses:4']);
     Route::get('/user/infopengguna/{id}', [UserController::class, 'infopengguna'])->name('user.infopengguna');
     Route::patch('/user/updatepelajar/{id}', [UserController::class, 'updatepelajar'])->name('user.updatepelajar');
 
