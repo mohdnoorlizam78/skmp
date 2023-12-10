@@ -129,6 +129,7 @@ class PelajarController extends Controller
         $nextId = User::max('id');
         $validatedData->user_id = $nextId;
         $validatedData->nama_pelajar = $request->input('name');
+        $validatedData->jantina = $request->input('jantina');
         $validatedData->status = 1;
         $validatedData->save();
 
