@@ -81,14 +81,7 @@
                             </tr>
                             @endforeach
                         </tbody>
-                        <tfoot>
-                            <tr>
-                                <th>Bil</th>
-                                <th>Nama Kursus</th>
-                                <th></th>
-
-                            </tr>
-                        </tfoot>
+                        
                     </table>
 
                 </div>
