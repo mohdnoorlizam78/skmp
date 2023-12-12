@@ -21,14 +21,14 @@ class PelajarController extends Controller
         // paparkan senarai pelajar
         $senaraiPelajar = Pelajar::orderBy('created_at', 'DESC')->get();
         $senaraiKursus = Kursus::all();
-        $sesiMasuk = SesiMasuk::all();
+        $sesiKemasukan = SesiMasuk::all();
         $senaraiPeranan = Peranan::all();
         $latestId = User::latest('id')->value('id');
 
         return view('pelajar.index', compact(
             'senaraiPelajar',
             'senaraiKursus',
-            'sesiMasuk',
+            'sesiKemasukan',
             'latestId',
             'senaraiPeranan'
         ));
@@ -62,8 +62,8 @@ class PelajarController extends Controller
 
         $request->validate([
             'nama_pelajar' => 'required',
-            //'no_ndp' => 'required|unique',
-            'no_ndp' => 'required|unique:pelajars|max:255',
+            //'email' => 'required|unique',
+            'no_ndp' => 'required|unique:pelajars|max:8',
             'no_tel' => 'required',
             'no_tel_penjaga' => 'required'
         ], [
@@ -105,10 +105,13 @@ class PelajarController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
+            'no_ndp' => 'required|unique:pelajars|max:8',
             'password' => 'required|min:8'
         ], [
             'name.required' => 'Nama wajib diisi',
-            'email.required' => 'Emel wajib diisi',
+            'no_ndp.required' => 'NDP wajib diisi',
+            'no_ndp.unique' => 'NDP sudah digunakan, sila masukkan NDP yang lain',
+            'email.required' => 'NDP wajib diisi',
             'email.email' => 'Emel yang dimasukkan tidak valid',
             'email.unique' => 'Emel sudah digunakan, sila masukkan email yang lain',
             'password.required' => 'Password wajib diisi',
@@ -130,10 +133,16 @@ class PelajarController extends Controller
         $validatedData->user_id = $nextId;
         $validatedData->nama_pelajar = $request->input('name');
         $validatedData->jantina = $request->input('jantina');
+        $validatedData->kursus_id = $request->input('kursus_id');
+        $validatedData->no_ndp = $request->input('no_ndp');
+        $validatedData->sesimasuk_id = $request->input('sesimasuk_id');
+        //$validatedData-> => $request->input('gambar');
+        $validatedData->alamat_rumah = $request->input('alamat_rumah');
+        $validatedData->alamat_lain = $request->input('alamat_lain');
+        $validatedData->no_tel = $request->input('no_tel');
+        $validatedData->no_tel_penjaga = $request->input('no_tel_penjaga');
         $validatedData->status = 1;
         $validatedData->save();
-
-
 
         return redirect('pelajar')->with('success', 'Rekod berjaya disimpan');
     }

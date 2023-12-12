@@ -106,7 +106,6 @@ class KeluarMasukController extends Controller
             ->get();
 
         return view('keluarmasuk.semakpermohonan', compact(
-            'statusMohon',
             'senaraiTujuan',
             'semakStatus'
         ));

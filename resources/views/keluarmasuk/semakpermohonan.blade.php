@@ -50,7 +50,6 @@
                         <tbody>
                             @foreach($semakStatus as $pelajar )
                             <tr>
-                                
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$pelajar->user->name}}</td>
                                 <td>{{$pelajar->tujuanmohon->nama_tujuan}}</td>

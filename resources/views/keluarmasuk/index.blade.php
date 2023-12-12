@@ -55,7 +55,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="example2" class="table table-bordered table-striped">
+                        <table id="tableRekodPenuh" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>Bil</th>
@@ -127,7 +127,7 @@
                     </div>
                     <!-- /.card-header -->
                     <div class="card-body">
-                        <table id="example1" class="table table-bordered table-striped">
+                        <table id="tableRekodKeseluruhanDitolak" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>Bil</th>
@@ -149,10 +149,8 @@
                                     </td>
                                     <td>{{$status->ndp_id}}</td>
                                     <td>{{$status->created_at}}</td>
-                                    <td>
-                                        <span class="badge badge-danger">Ditolak</span>
-                                     </td>
-                                     <td>{{$status->catatan}}</td>
+                                    <td><span class="badge badge-danger">Ditolak</span></td>
+                                    <td>{{$status->catatan}}</td>
                                 </tr>
                                  @endforeach
 
@@ -164,9 +162,7 @@
                                     </td>
                                     <td>{{$status->ndp_id}}</td>
                                     <td>{{$status->created_at}}</td>
-                                    <td>
-                                        <span class="badge badge-danger">Digantung</span>
-                                    </td>
+                                    <td><span class="badge badge-danger">Digantung</span></td>
                                     <td>{{$status->catatan}}</td>
                                 </tr>
                                  @endforeach

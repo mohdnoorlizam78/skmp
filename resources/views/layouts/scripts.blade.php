@@ -23,6 +23,7 @@
 <script>
   $(function() {
     $("#tablePelajar").DataTable({
+      
       "language": {
         "url": '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Malay.json',
     },
@@ -55,6 +56,7 @@
     });
 
     $("#tableMohon").DataTable({
+      
       "language": {
         "url": '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Malay.json',
     },
@@ -87,6 +89,7 @@
     });
 
     $("#tableRekodPenuh").DataTable({
+      
       "language": {
         "url": '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Malay.json',
     },
@@ -119,6 +122,7 @@
     });
 
     $("#tableRekodKeseluruhanDitolak").DataTable({
+      
       "language": {
         "url": '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Malay.json',
     },
@@ -151,6 +155,7 @@
     });
 
     $("#tableKursus").DataTable({
+      
       "language": {
         "url": '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Malay.json',
     },
@@ -183,6 +188,7 @@
     });
 
     $("#tableUser").DataTable({
+     
       "language": {
         "url": '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Malay.json',
     },
@@ -215,6 +221,7 @@
     });
 
     $("#tableSesi").DataTable({
+     
       "language": {
         "url": '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Malay.json',
     },
@@ -247,6 +254,7 @@
     });
 
     $("#tableTujuan").DataTable({
+      
       "language": {
         "url": '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Malay.json',
     },

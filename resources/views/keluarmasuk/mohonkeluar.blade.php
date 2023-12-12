@@ -108,6 +108,8 @@
                             <span class="badge badge-success">Diluluskan</span>
                             @elseif($pelajar->statuskebenaran_id == "3")
                             <span class="badge badge-danger">Ditolak</span>
+                            @else
+                            <span class="badge badge-danger">Digantung</span>
                             @endif
 
                         </td>
@@ -134,7 +136,15 @@
 
                         </td>
                         <td>{{$pelajar->catatan}}</td>
-                        <td>{{$pelajar->pelulus->name}}</td>
+                        <td>
+                            @if($pelajar->statuskebenaran_id == "2")
+                            Diluluskan
+                            @elseif($pelajar->statuskebenaran_id == "1")
+                            Tunggu kelulusan
+                            @else
+                            {{$pelajar->pelulus->name}}
+                            @endif
+                        </td>
                         <td>{{$pelajar->created_at}}</td>
 
                     </tr>
