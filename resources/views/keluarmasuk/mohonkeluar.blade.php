@@ -1,10 +1,17 @@
 @extends('layouts.master')
 @section('content')
 
-<!-- /second row -->
-@if(Session::has('success'))
+<!-- jika berjaya mohon -->
+@if(Session::has('berjaya'))
 <div class="alert alert-success" role="alert">
-    {{ Session::get('success') }}
+    {{ Session::get('berjaya') }}
+</div>
+@endif
+
+<!-- jika mohon lebih sekali dalam sehari -->
+@if(Session::has('gagal'))
+<div class="alert alert-danger" role="alert">
+    {{ Session::get('gagal') }}
 </div>
 @endif
 
