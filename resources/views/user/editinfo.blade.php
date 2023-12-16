@@ -19,7 +19,7 @@
                         <div class="form-group row">
                             <label for="name" class="col-sm-2 col-form-label">Nama pengguna</label>
                             <div class="col-sm-10">
-                                <input type="text" name="name" class="form-control" id="name" value="{{$senaraiPengguna->name}}" readonly>
+                                <input type="text" name="name" class="form-control" id="name" value="{{$senaraiPengguna->name}}">
                             </div>
                         </div>
                         <div class="form-group row">
