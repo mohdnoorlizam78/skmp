@@ -98,6 +98,7 @@ class KeluarMasukController extends Controller
     // {
     //     // simpan permohonan
     //     $request->validate(
+
     //         [
     //             'tujuan_id' => 'required',
     //         ],
@@ -145,9 +146,11 @@ class KeluarMasukController extends Controller
         if ($rekodSediaAdaKeluar) {
             // paparkan mesej permohonan keluar gagal.
             $message = 'Permohonan gagal. Anda telah mohon keluar pada hari yang sama.';
+            return redirect()->back()->with('gagal', $message);
         } elseif ($rekodSediaAdaKlinik) {
             // paparkan mesej permohonan ke klinik gagal.
             $message = 'Permohonan gagal. Anda telah mohon keluar ke klinik pada hari yang sama.';
+            return redirect()->back()->with('gagal', $message);
         } else {
             // Simpan permohonan baru
             KeluarMasuk::create([
@@ -165,7 +168,7 @@ class KeluarMasukController extends Controller
 
             $message = 'Permohonan telah disimpan!';
         }
-        return redirect()->back()->with('success', $message);
+        return redirect()->back()->with('berjaya', $message);
     }
 
     public function simpanmohonbalik(Request $request)
@@ -185,6 +188,7 @@ class KeluarMasukController extends Controller
         if ($rekodSediaAdaBalik) {
             // paparkan mesej permohonan keluar gagal.
             $message = 'Permohonan gagal. Anda telah mohon keluar balik pada hari yang sama.';
+            return redirect()->back()->with('gagal', $message);
         } else {
             // Simpan permohonan baru
             KeluarMasuk::create([
@@ -202,7 +206,7 @@ class KeluarMasukController extends Controller
 
             $message = 'Permohonan telah disimpan!';
         }
-        return redirect()->back()->with('success', $message);
+        return redirect()->back()->with('berjaya', $message);
     }
     public function simpanmohonklinik(Request $request)
     {
@@ -221,6 +225,7 @@ class KeluarMasukController extends Controller
         if ($rekodSediaAdaKlinik) {
             // paparkan mesej permohonan keluar gagal.
             $message = 'Permohonan gagal. Anda telah mohon keluar ke klinik pada hari yang sama.';
+            return redirect()->back()->with('gagal', $message);
         } else {
             // Simpan permohonan baru
             KeluarMasuk::create([
@@ -238,7 +243,7 @@ class KeluarMasukController extends Controller
 
             $message = 'Permohonan telah disimpan!';
         }
-        return redirect()->back()->with('success', $message);
+        return redirect()->back()->with('berjaya', $message);
     }
 
     public function semakPermohonan()
