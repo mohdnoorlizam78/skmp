@@ -145,7 +145,9 @@
                             <div class="card-header">
                                 {{-- <h4>Senarai pelajar dibenarkan keluar pada : <?php //date_default_timezone_set('Asia/Kuala_Lumpur');
                                                                                 //echo date('Y-m-d');  ?></h4> --}}
-                            </div>
+                        <h4>Senarai keseluruhan pelajar dibenarkan balik</h4>    
+                        </div>
+                            
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <table id="tableRekodBalik" class="table table-bordered table-striped">
@@ -212,7 +214,6 @@
                             </div>
                             <!-- /.card-body -->
                         </div>
-        
             </div>
         
             <div class="tab-pane" id="klinik">
@@ -220,10 +221,11 @@
                             <div class="card-header">
                                 {{-- <h4>Senarai pelajar dibenarkan keluar pada : <?php //date_default_timezone_set('Asia/Kuala_Lumpur');
                                                                                 //echo date('Y-m-d');  ?></h4> --}}
-                            </div>
+                        <h4>Senarai keseluruhan pelajar pergi ke klinik</h4>     
+                        </div>
                             <!-- /.card-header -->
                             <div class="card-body">
-                                <table id="tableRekodBalik" class="table table-bordered table-striped">
+                                <table id="tableRekodKlinik" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
                                             <th>Bil</th>
@@ -295,7 +297,8 @@
                     <div class="card-header">
                                 {{-- <h4>Senarai pelajar dilarang keluar pada : <?php //date_default_timezone_set('Asia/Kuala_Lumpur');
                                                                             //echo date('Y-m-d');  ?></h4> --}}
-                    </div>
+                <h4>Senarai keseluruhan pelajar tidak dibenarkan balik</h4>     
+                </div>
                         <div class="card-body">
                                 <table id="tableRekodKeseluruhanDitolak" class="table table-bordered table-striped">
                                     <thead>
@@ -346,4 +349,6 @@
                             <!-- /.card-body -->
                 </div>
             </div>
-@endsection
+        </div>
+    </div>
+            @endsection
