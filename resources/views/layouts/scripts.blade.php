@@ -187,7 +187,6 @@
       ]
     });
 
-
     $("#tableRekodKeseluruhanDitolak").DataTable({
       
       "language": {
@@ -356,4 +355,5 @@
   });
  
 </script>
+
 
