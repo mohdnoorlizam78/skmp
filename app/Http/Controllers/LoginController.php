@@ -41,7 +41,7 @@ class LoginController extends Controller
                 return redirect('dashboard');
             } elseif (Auth::user()->peranan_id == "3") {
                 return redirect('keluarmasuk');
-            } else
+            } else // jika login adalah pelajar
                 return redirect('keluarmasuk/mohonkeluar')->with('success', 'Berhasil login');
         } else {
             return redirect('login')->with('gagal', 'Emel atau kata laluan salah.')->withInput();
