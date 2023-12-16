@@ -15,6 +15,7 @@ class KeluarMasuk extends Model
     protected $fillable = [
 
         'user_id',
+        'kursus_id',
         'ndp_id',
         'tujuan_id',
         'destinasi',
@@ -30,10 +31,10 @@ class KeluarMasuk extends Model
         'status_masuk'
     ];
 
-    public function User(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'user_id');
-    }
+    // public function User(): BelongsTo
+    // {
+    //     return $this->belongsTo(User::class, 'user_id');
+    // }
     public function pelajarinfo(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
@@ -58,5 +59,18 @@ class KeluarMasuk extends Model
     public function dibenarkan(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function kursus()
+    {
+        return $this->belongsTo(Kursus::class, 'kursus_id');
+    }
+    public function pelajar()
+    {
+        return $this->belongsTo(Pelajar::class);
     }
 }

@@ -33,7 +33,7 @@
             <div class="col-lg-4 col-6">
                 <div class="small-box bg-default">
                     <div class="inner">
-                        <button type="button" class="btn btn-block bg-gradient-success btn-lg" data-toggle="modal" data-target="#keluar-sm">Mohon Keluar</button>
+                        <button type="button" class="btn btn-block bg-gradient-success btn-lg" data-toggle="modal" data-target="#keluar-sm">Mohon Keluar(Outing)</button>
 
                     </div>
                     <div class="icon">
@@ -47,7 +47,7 @@
                 <!-- small box -->
                 <div class="small-box bg-default">
                     <div class="inner">
-                        <button type="button" class="btn btn-block bg-gradient-primary btn-lg" data-toggle="modal" data-target="#balik-sm">Mohon Balik</button>
+                        <button type="button" class="btn btn-block bg-gradient-primary btn-lg" data-toggle="modal" data-target="#balik-sm">Mohon Balik Bermalam</button>
 
                     </div>
                     <div class="icon">
@@ -121,8 +121,9 @@
                             @else
                             <a></a>
                             @endif --}}
+@if($pelajar->tarikh_keluar != Null)
 
-                            @if($pelajar->statuskebenaran_id == "1")
+                            @elseif($pelajar->statuskebenaran_id == "1" || "2")
                             <form id="deleteData" method="post" action="{{route('keluarmasuk.destroy', $pelajar->id)}}">
                                 @csrf
                                 @method('delete')
@@ -133,7 +134,7 @@
                             @else
                             <a></a>
                             @endif
-
+                            
                         </td>
                         <td>{{$pelajar->catatan}}</td>
                         <td>
@@ -180,6 +181,7 @@
                         <input type="hidden" class="form-control" id="status_masuk" name="status_masuk" value="0" readonly>
                         <input type="hidden" class="form-control" id="pegawaikeluar_id" name="pegawaikeluar_id" value="0" readonly>
                         <input type="hidden" class="form-control" id="pegawaikeluar_id" name="pegawaimasuk_id" value="0" readonly>
+                        <input type="hidden" class="form-control" id="kursus_id" name="kursus_id" value="{{$pelajarData->kursus_id}}" readonly>
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
@@ -204,7 +206,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="{{ route('keluarmasuk.simpanmohonkeluar') }}">
+                    <form method="POST" action="{{ route('keluarmasuk.simpanmohonbalik') }}">
                         @csrf
 
                         <label>
@@ -214,10 +216,11 @@
                         <input type="hidden" class="form-control" id="ndp_id" name="ndp_id" value="{{$pelajarData->no_ndp}}" readonly>
                         <input type="hidden" class="form-control" id="tujuan_id" name="tujuan_id" value="2" readonly>
                         <input type="hidden" class="form-control" id="statuskebenaran_id" name="statuskebenaran_id" value="1" readonly>
+                        <input type="hidden" class="form-control" id="kursus_id" name="kursus_id" value="{{$pelajarData->kursus_id}}" readonly>
 
                         <div class="mb-3">
                             <label for="destinasi" class="col-form-label">Destinasi(selain alamat rumah)</label>
-                            <input type="text" class="form-control" id="destinasi" name="destinasi">
+                            <input type="text" class="form-control" id="destinasi" name="destinasi" required>
 
                         </div>
 
@@ -244,7 +247,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="{{ route('keluarmasuk.simpanmohonkeluar') }}">
+                    <form method="POST" action="{{ route('keluarmasuk.simpanmohonklinik') }}">
                         @csrf
 
                         <label>
@@ -254,6 +257,7 @@
                         <input type="hidden" class="form-control" id="ndp_id" name="ndp_id" value="{{$pelajarData->no_ndp}}" readonly>
                         <input type="hidden" class="form-control" id="tujuan_id" name="tujuan_id" value="3" readonly>
                         <input type="hidden" class="form-control" id="statuskebenaran_id" name="statuskebenaran_id" value="2" readonly>
+                        <input type="hidden" class="form-control" id="kursus_id" name="kursus_id" value="{{$pelajarData->kursus_id}}" readonly>
 
 
                 </div>

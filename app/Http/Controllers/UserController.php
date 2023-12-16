@@ -125,7 +125,6 @@ class UserController extends Controller
         //kemas kini senarai pengguna
         $senaraiPengguna = User::find($id);
         $senaraiPeranan = Peranan::all();
-        //$kemaskiniData = Kursus::pluck('nama_kursus', 'id');
         return view('user.edit', compact('senaraiPengguna', 'senaraiPeranan'));
     }
 
@@ -173,6 +172,26 @@ class UserController extends Controller
         $senaraiPengguna = User::find($id);
         $senaraiPeranan = Peranan::all();
         return view('user.infopengguna', compact('senaraiPengguna', 'senaraiPeranan'));
+    }
+    public function editinfo(string $id)
+    {
+        //kemas kini senarai pengguna
+        $senaraiPengguna = User::find($id);
+        return view('user.editinfo', compact('senaraiPengguna'));
+    }
+    public function updateinfo(Request $request, string $id)
+    {
+        $kemaskiniPengguna = User::find($id);
+        $input = $request->all();
+        $kemaskiniPengguna->update($input);
+        if (Auth()->user()->peranan_id == 4)
+            return redirect('keluarmasuk/mohonkeluar')->with('success', 'Profail dikemas kini.');
+        elseif (Auth()->user()->peranan_id == 1)
+            return redirect('dashboard');
+        elseif (Auth()->user()->peranan_id == 2)
+            return redirect('keluarmasuk/semakpermohonan')->with('success', 'Profail dikemas kini.');
+        elseif (Auth()->user()->peranan_id == 3)
+            return redirect('keluarmasuk')->with('success', 'Profail dikemas kini.');
     }
     public function updatepelajar(Request $request, string $id)
     {

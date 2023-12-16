@@ -70,6 +70,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/keluarmasuk', [KeluarMasukController::class, 'index'])->name('keluarmasuk.index')->middleware(['tidakbolehAkses:1', 'tidakbolehAkses:2', 'tidakbolehAkses:4']);
     Route::get('/keluarmasuk/mohonkeluar', [KeluarMasukController::class, 'mohonkeluar'])->name('keluarmasuk.mohonkeluar')->middleware(['tidakbolehAkses:1', 'tidakbolehAkses:2', 'tidakbolehAkses:3']); //pelajar mohon keluar
     Route::post('/keluarmasuk/simpanmohonkeluar', [KeluarMasukController::class, 'simpanmohonkeluar'])->name('keluarmasuk.simpanmohonkeluar')->middleware(['tidakbolehAkses:1', 'tidakbolehAkses:2', 'tidakbolehAkses:3']); //simpan mohon keluar
+    Route::post('/keluarmasuk/simpanmohonbalik', [KeluarMasukController::class, 'simpanmohonbalik'])->name('keluarmasuk.simpanmohonbalik')->middleware(['tidakbolehAkses:1', 'tidakbolehAkses:2', 'tidakbolehAkses:3']); //simpan mohon balik
+    Route::post('/keluarmasuk/simpanmohonklinik', [KeluarMasukController::class, 'simpanmohonklinik'])->name('keluarmasuk.simpanmohonklinik')->middleware(['tidakbolehAkses:1', 'tidakbolehAkses:2', 'tidakbolehAkses:3']); //simpan mohon klinik
     Route::get('/keluarmasuk/semakpermohonan', [KeluarMasukController::class, 'semakPermohonan'])->name('keluarmasuk.semakpermohonan')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
     Route::patch('/keluarmasuk/updatemohon/{id}', [KeluarMasukController::class, 'updatemohon'])->name('keluarmasuk.updatemohon')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
 
@@ -100,5 +102,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/user/store', [UserController::class, 'store'])->name('user.store')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
     Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('user.edit')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
     Route::patch('/user/update/{id}', [UserController::class, 'update'])->name('user.update')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::get('/user/editinfo/{id}', [UserController::class, 'editinfo'])->name('user.editinfo');
+    Route::patch('/user/updateinfo/{id}', [UserController::class, 'updateinfo'])->name('user.updateinfo');
     Route::delete('/user/destroy/{id}', [UserController::class, 'destroy'])->name('user.destroy')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
 });

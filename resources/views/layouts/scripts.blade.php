@@ -121,6 +121,73 @@
       ]
     });
 
+    $("#tableRekodBalik").DataTable({
+      
+      "language": {
+        "url": '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Malay.json',
+    },
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
+      dom: 'lBfrtip',
+        buttons: [
+          
+            //'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],
+      "buttons": [
+        
+        "csv", "excel",
+        { extend: 'pdf',
+              orientation: 'landscape',
+              pageSize: 'LEGAL',
+              title: 'Rekod Keseluruhan Pelajar Keluar Masuk' },
+        { extend: 'copy', text: 'Salin' },
+        { extend: 'print',
+              orientation: 'landscape',
+              pageSize: 'LEGAL',
+              title: 'Rekod Keseluruhan Pelajar Keluar Masuk',
+              text: 'Cetak' },
+        { extend: 'colvis', text: 'Paparan Kolum' },
+      ]
+    });
+
+    $("#tableRekodKlinik").DataTable({
+      
+      "language": {
+        "url": '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Malay.json',
+    },
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
+      dom: 'lBfrtip',
+        buttons: [
+          
+            //'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],
+      "buttons": [
+        
+        "csv", "excel",
+        { extend: 'pdf',
+              orientation: 'landscape',
+              pageSize: 'LEGAL',
+              title: 'Rekod Keseluruhan Pelajar Keluar Masuk' },
+        { extend: 'copy', text: 'Salin' },
+        { extend: 'print',
+              orientation: 'landscape',
+              pageSize: 'LEGAL',
+              title: 'Rekod Keseluruhan Pelajar Keluar Masuk',
+              text: 'Cetak' },
+        { extend: 'colvis', text: 'Paparan Kolum' },
+      ]
+    });
+
+
     $("#tableRekodKeseluruhanDitolak").DataTable({
       
       "language": {

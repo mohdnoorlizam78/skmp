@@ -27,28 +27,54 @@ class KeluarMasukController extends Controller
         $data = KeluarMasuk::all();
         $permohonan_ditolak = KeluarMasuk::where('statuskebenaran_id', '3')->get();
         $permohonan_digantung = KeluarMasuk::where('statuskebenaran_id', '4')->get();
+        $dibenarkankeluar = KeluarMasuk::where('tujuan_id', '1')->get();
+        // ->where('tujuan_id', '3')
+        // ->get();
+
+        $dibenarkanbalik = KeluarMasuk::orderBy('updated_at', 'desc')
+            ->where('tujuan_id', '2')
+            ->where('statuskebenaran_id', '2')
+            ->get();
+        $dibenarkanklinik = KeluarMasuk::orderBy('updated_at', 'desc')
+            ->where('tujuan_id', '3')
+            ->get();
 
         return view('keluarmasuk.index', compact(
             'dibenarkanKeluarMasuk',
+            'dibenarkankeluar',
+            'dibenarkanbalik',
+            'dibenarkanklinik',
             'data',
             'permohonan_ditolak',
-            'permohonan_digantung'
+            'permohonan_digantung',
         ));
     }
 
     public function rekodpenuh()
     {
-        // paparkan rekod keseluruhan keluar masuk
-        $dataKeluarMasuk = KeluarMasuk::orderBy('created_at', 'desc')->get();
+
         //$tidakBolehKeluarMasuk = KeluarMasuk::where('statuskebenaran_id', '3')->get();
         $permohonan_ditolak = KeluarMasuk::where('statuskebenaran_id', '3')->get();
         $permohonan_digantung = KeluarMasuk::where('statuskebenaran_id', '4')->get();
+        $dibenarkanbalik = KeluarMasuk::orderBy('updated_at', 'desc')
+            ->where('tujuan_id', '2')
+            ->where('statuskebenaran_id', '2')
+            ->get();
+        $dibenarkankeluar = KeluarMasuk::orderBy('created_at', 'desc')
+            ->where('tujuan_id', '1')
+            ->get();
+        $klinik = KeluarMasuk::orderBy('updated_at', 'desc')
+            ->where('tujuan_id', '3')
+            ->get();
 
         return view('keluarmasuk.rekodpenuh', compact(
-            'dataKeluarMasuk',
-            // 'tidakBolehKeluarMasuk',
+
+            'dibenarkankeluar',
+            'dibenarkanbalik',
+            'klinik',
             'permohonan_ditolak',
-            'permohonan_digantung'
+            'permohonan_digantung',
+
         ));
     }
 
@@ -68,38 +94,156 @@ class KeluarMasukController extends Controller
         ));
     }
 
+    // public function simpanmohonkeluar(Request $request)
+    // {
+    //     // simpan permohonan
+    //     $request->validate(
+    //         [
+    //             'tujuan_id' => 'required',
+    //         ],
+    //         [
+    //             'tujuan_id.required' => 'Tujuan wajib dipilih'
+    //         ]
+    //     );
+
+    //     $data = [
+    // 'user_id' => $request->user_id,
+    // 'kursus_id' => $request->kursus_id,
+    // 'ndp_id' => $request->ndp_id,
+    // 'tujuan_id' => $request->tujuan_id,
+    // 'destinasi' => $request->destinasi,
+    // 'statuskebenaran_id' => $request->statuskebenaran_id,
+    // 'pegawaikeluar_id' => $request->pegawaikeluar_id,
+    // 'pegawaimasuk_id' => $request->pegawaimasuk_id,
+    // 'status_masuk' => $request->status_masuk
+
+    //     ];
+
+    //     KeluarMasuk::create($data);
+
+    //     //return view('tujuan.index', compact('simpanData'))->with('success', 'Rekod berjaya disimpan.');
+    //     return redirect(route('keluarmasuk.mohonkeluar'))->with('success', 'Rekod berjaya disimpan');
+    // }
+
     public function simpanmohonkeluar(Request $request)
     {
-        // simpan permohonan
-        $request->validate(
-            [
-                'tujuan_id' => 'required',
-            ],
-            [
-                'tujuan_id.required' => 'Tujuan wajib dipilih'
-            ]
-        );
+        // periksa dan simpan data form
+        $request->validate([
+            'tujuan_id' => 'required',
+        ]);
 
-        $data = [
-            'user_id' => $request->user_id,
-            'ndp_id' => $request->ndp_id,
-            'tujuan_id' => $request->tujuan_id,
-            'destinasi' => $request->destinasi,
-            'statuskebenaran_id' => $request->statuskebenaran_id,
-            'pegawaikeluar_id' => $request->pegawaikeluar_id,
-            'pegawaimasuk_id' => $request->pegawaimasuk_id,
-            'status_masuk' => $request->status_masuk
-        ];
+        $tarikh_baru = $request->input('created_at');
 
-        KeluarMasuk::create($data);
+        // periksa tarikh mohon, adakah sama dengan tarikh telah dimohon
+        $rekodSediaAdaKeluar = KeluarMasuk::whereDate('created_at', now()->toDateString())
+            ->where('tujuan_id', '1')
+            ->first();
+        $rekodSediaAdaKlinik = KeluarMasuk::whereDate('created_at', now()->toDateString())
+            ->where('tujuan_id', '3')
+            ->first();
 
-        //return view('tujuan.index', compact('simpanData'))->with('success', 'Rekod berjaya disimpan.');
-        return redirect(route('keluarmasuk.mohonkeluar'))->with('success', 'Rekod berjaya disimpan');
+        if ($rekodSediaAdaKeluar) {
+            // paparkan mesej permohonan keluar gagal.
+            $message = 'Permohonan gagal. Anda telah mohon keluar pada hari yang sama.';
+        } elseif ($rekodSediaAdaKlinik) {
+            // paparkan mesej permohonan ke klinik gagal.
+            $message = 'Permohonan gagal. Anda telah mohon keluar ke klinik pada hari yang sama.';
+        } else {
+            // Simpan permohonan baru
+            KeluarMasuk::create([
+                'created_at' => $tarikh_baru,
+                'user_id' => $request->input('user_id'),
+                'kursus_id' => $request->input('kursus_id'),
+                'ndp_id' => $request->input('ndp_id'),
+                'tujuan_id' => $request->input('tujuan_id'),
+                'destinasi' => $request->input('destinasi'),
+                'statuskebenaran_id' => $request->input('statuskebenaran_id'),
+                'pegawaikeluar_id' => $request->input('pegawaikeluar_id'),
+                'pegawaimasuk_id' => $request->input('pegawaimasuk_id'),
+                'status_masuk' => $request->input('status_masuk'),
+            ]);
+
+            $message = 'Permohonan telah disimpan!';
+        }
+        return redirect()->back()->with('success', $message);
     }
+
+    public function simpanmohonbalik(Request $request)
+    {
+        // periksa dan simpan data form
+        $request->validate([
+            'tujuan_id' => 'required',
+        ]);
+
+        $tarikh_baru = $request->input('created_at');
+
+        // periksa tarikh mohon, adakah sama dengan tarikh telah dimohon
+        $rekodSediaAdaBalik = KeluarMasuk::whereDate('created_at', now()->toDateString())
+            ->where('tujuan_id', '2')
+            ->first();
+
+        if ($rekodSediaAdaBalik) {
+            // paparkan mesej permohonan keluar gagal.
+            $message = 'Permohonan gagal. Anda telah mohon keluar balik pada hari yang sama.';
+        } else {
+            // Simpan permohonan baru
+            KeluarMasuk::create([
+                'created_at' => $tarikh_baru,
+                'user_id' => $request->input('user_id'),
+                'kursus_id' => $request->input('kursus_id'),
+                'ndp_id' => $request->input('ndp_id'),
+                'tujuan_id' => $request->input('tujuan_id'),
+                'destinasi' => $request->input('destinasi'),
+                'statuskebenaran_id' => $request->input('statuskebenaran_id'),
+                'pegawaikeluar_id' => $request->input('pegawaikeluar_id'),
+                'pegawaimasuk_id' => $request->input('pegawaimasuk_id'),
+                'status_masuk' => $request->input('status_masuk'),
+            ]);
+
+            $message = 'Permohonan telah disimpan!';
+        }
+        return redirect()->back()->with('success', $message);
+    }
+    public function simpanmohonklinik(Request $request)
+    {
+        // periksa dan simpan data form
+        $request->validate([
+            'tujuan_id' => 'required',
+        ]);
+
+        $tarikh_baru = $request->input('created_at');
+
+        // periksa tarikh mohon, adakah sama dengan tarikh telah dimohon
+        $rekodSediaAdaKlinik = KeluarMasuk::whereDate('created_at', now()->toDateString())
+            ->where('tujuan_id', '3')
+            ->first();
+
+        if ($rekodSediaAdaKlinik) {
+            // paparkan mesej permohonan keluar gagal.
+            $message = 'Permohonan gagal. Anda telah mohon keluar ke klinik pada hari yang sama.';
+        } else {
+            // Simpan permohonan baru
+            KeluarMasuk::create([
+                'created_at' => $tarikh_baru,
+                'user_id' => $request->input('user_id'),
+                'kursus_id' => $request->input('kursus_id'),
+                'ndp_id' => $request->input('ndp_id'),
+                'tujuan_id' => $request->input('tujuan_id'),
+                'destinasi' => $request->input('destinasi'),
+                'statuskebenaran_id' => $request->input('statuskebenaran_id'),
+                'pegawaikeluar_id' => $request->input('pegawaikeluar_id'),
+                'pegawaimasuk_id' => $request->input('pegawaimasuk_id'),
+                'status_masuk' => $request->input('status_masuk'),
+            ]);
+
+            $message = 'Permohonan telah disimpan!';
+        }
+        return redirect()->back()->with('success', $message);
+    }
+
     public function semakPermohonan()
     {
         //paparkan status permohonan pelajar
-
         $senaraiTujuan = Tujuan::all();
         $semakStatus = KeluarMasuk::orderBy('created_at', 'desc')
             ->where('statuskebenaran_id', '1')

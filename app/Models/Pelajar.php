@@ -24,9 +24,9 @@ class Pelajar extends Model
         'no_tel_penjaga',
         'status',
     ];
-    public function Kursus(): BelongsTo
+    public function kursus(): BelongsTo
     {
-        return $this->belongsTo(Kursus::class);
+        return $this->belongsTo(Kursus::class, 'kursus_id');
     }
     public function sesimasuk(): BelongsTo
     {

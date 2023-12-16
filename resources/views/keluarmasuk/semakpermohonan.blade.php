@@ -37,6 +37,8 @@
                             <tr>
                                 <th>Bil</th>
                                 <th>Nama pelajar</th>
+                                <th>Kursus</th>
+                                <th>Tarikh Mohon</th>
                                 <th>Tujuan</th>
                                 <th>Destinasi</th>
                                 <th>Status</th>
@@ -52,6 +54,8 @@
                             <tr>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$pelajar->user->name}}</td>
+                                <td>{{$pelajar->kursus->nama_kursus}}</td>
+                                <td>{{$pelajar->created_at}}</td>
                                 <td>{{$pelajar->tujuanmohon->nama_tujuan}}</td>
                                 <td>{{$pelajar->destinasi}}</td>
                                 <td>
