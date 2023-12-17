@@ -13,7 +13,7 @@
                 </ol>
             </div>
         </div>
-    </div><!-- /.container-fluid -->
+    </div>
 </section>
 
 @if(Session::has('success'))
@@ -25,13 +25,8 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
-
-            <!-- /.card -->
-
             <div class="card">
-
-                <div class="card-body">
-                    
+                <div class="card-body">   
                     <table id="tableMohon" class="table table-bordered table-striped">
                         <thead>
                             <tr>
@@ -42,16 +37,14 @@
                                 <th>Tujuan</th>
                                 <th>Destinasi</th>
                                 <th>Status</th>
-                                {{-- <th>Catatan Pegawai</th>
-                                <th>Tarikh mohon</th>
-                                <th>Tarikh pengesahan</th> --}}
-
                             </tr>
-
                         </thead>
                         <tbody>
                             @foreach($semakStatus as $pelajar )
                             <tr>
+                                
+                                <td>
+                                    <input type="checkbox" name="ids" class="checkbox_ids" id="" value="{{$pelajar->id}}"></td>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$pelajar->user->name}}</td>
                                 <td>{{$pelajar->kursus->nama_kursus}}</td>
@@ -68,31 +61,14 @@
                                     @else
                                     <span class="badge badge-danger">Digantung</span>
                                     @endif
-
                                 </td>
-                                {{-- <td>{{$pelajar->catatan}}</td>
-                                <td>{{$pelajar->created_at}}</td>
-                                <td>{{$pelajar->updated_at}}</td> --}}
-                             
                             </tr>
-                            
                             @endforeach
-                           
-                           
                         </tbody>
-
-                    </table>
-
-
-                </div>
-                <!-- /.card-body -->
+                    </tabl
             </div>
-            <!-- /.card -->
-
         </div>
-        <!-- /.col -->
     </div>
-    <!-- /.row -->
 </div>
 
 @endsection
