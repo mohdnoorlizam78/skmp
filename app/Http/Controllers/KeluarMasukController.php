@@ -3,13 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\KeluarMasuk;
-use App\Models\Kursus;
 use App\Models\Pelajar;
-use App\Models\Peranan;
-use App\Models\SesiMasuk;
-use App\Models\StatusKebenaran;
 use App\Models\Tujuan;
-use App\Models\User;
 use Illuminate\Http\Request;
 
 class KeluarMasukController extends Controller
@@ -259,6 +254,7 @@ class KeluarMasukController extends Controller
             'semakStatus'
         ));
     }
+
     public function editmohon(string $id)
     {
         //kemas kini permohonan
