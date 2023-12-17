@@ -73,6 +73,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/keluarmasuk/simpanmohonbalik', [KeluarMasukController::class, 'simpanmohonbalik'])->name('keluarmasuk.simpanmohonbalik')->middleware(['tidakbolehAkses:1', 'tidakbolehAkses:2', 'tidakbolehAkses:3']); //simpan mohon balik
     Route::post('/keluarmasuk/simpanmohonklinik', [KeluarMasukController::class, 'simpanmohonklinik'])->name('keluarmasuk.simpanmohonklinik')->middleware(['tidakbolehAkses:1', 'tidakbolehAkses:2', 'tidakbolehAkses:3']); //simpan mohon klinik
     Route::get('/keluarmasuk/semakpermohonan', [KeluarMasukController::class, 'semakPermohonan'])->name('keluarmasuk.semakpermohonan')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+
     Route::patch('/keluarmasuk/updatemohon/{id}', [KeluarMasukController::class, 'updatemohon'])->name('keluarmasuk.updatemohon')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
 
     Route::post('/keluarmasuk/store', [KeluarMasukController::class, 'store'])->name('keluarmasuk.store')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
