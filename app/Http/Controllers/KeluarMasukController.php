@@ -26,7 +26,7 @@ class KeluarMasukController extends Controller
         // ->where('tujuan_id', '3')
         // ->get();
 
-        $dibenarkanbalik = KeluarMasuk::orderBy('updated_at', 'desc')
+        $dibenarkanbalik = KeluarMasuk::orderBy('tarikh_keluar', 'desc')
             ->where('tujuan_id', '2')
             ->where('statuskebenaran_id', '2')
             ->get();
