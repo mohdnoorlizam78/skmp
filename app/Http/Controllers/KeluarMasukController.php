@@ -26,7 +26,7 @@ class KeluarMasukController extends Controller
         // ->where('tujuan_id', '3')
         // ->get();
 
-        $dibenarkanbalik = KeluarMasuk::orderBy('tarikh_keluar', 'desc')
+        $dibenarkanbalik = KeluarMasuk::orderBy('updated_at', 'desc')
             ->where('tujuan_id', '2')
             ->where('statuskebenaran_id', '2')
             ->get();
@@ -55,7 +55,7 @@ class KeluarMasukController extends Controller
             ->where('tujuan_id', '2')
             ->where('statuskebenaran_id', '2')
             ->get();
-        $dibenarkankeluar = KeluarMasuk::orderBy('created_at', 'desc')
+        $dibenarkankeluar = KeluarMasuk::orderBy('tarikh_keluar', 'desc')
             ->where('tujuan_id', '1')
             ->get();
         $klinik = KeluarMasuk::orderBy('updated_at', 'desc')
