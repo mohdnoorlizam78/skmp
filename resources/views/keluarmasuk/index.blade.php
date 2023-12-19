@@ -108,7 +108,6 @@
                                         @else
                                         <p style="background-color: #FF4D00;">Lambat</p>
                                         @endif
-
                                     </td>
                                 </tr>
                                 @endforeach
@@ -155,9 +154,8 @@
                                     <td>{{$keluarmasuk->ndp_id}}</td>
                                     <td>{{$keluarmasuk->tujuanmohon->nama_tujuan}}</td>
                                     <td>{{$keluarmasuk->created_at}}</td>
-                                    <td>@if($keluarmasuk->statuskebenaran_id == 1)
-                                       Belum disahkan
-                                        @elseif($keluarmasuk->statuskebenaran_id == 2)
+                                    <td>
+                                        @if($keluarmasuk->tarikh_keluar == Null)
                                         <a href="{{ route('keluarmasuk.editkeluar', $keluarmasuk->id) }}" class="btn btn-warning btn-sm">Sahkan keluar</a>
                                         @else
                                         {{$keluarmasuk->tarikh_keluar}}
@@ -165,9 +163,7 @@
                                     </td>
                                     <td>{{$keluarmasuk->masa_keluar}}</td>
                                     <td>
-                                        @if($keluarmasuk->statuskebenaran_id == 1)
-                                        Belum disahkan
-                                        @elseif($keluarmasuk->statuskebenaran_id == 2)
+                                        @if($keluarmasuk->tarikh_masuk == Null)
                                         <a href="{{ route('keluarmasuk.editmasuk', $keluarmasuk->id) }}" class="btn btn-danger btn-sm">Sahkan masuk</a>
                                         @else
                                         {{$keluarmasuk->tarikh_masuk}}
@@ -178,7 +174,7 @@
                                         @if($keluarmasuk->status_masuk == 0)
                                         Belum keluar
                                         @elseif($keluarmasuk->status_masuk == 1)
-                                        <p style="background-color: #FFC300;">Pelajar balik</p>
+                                        <p style="background-color: #FFC300;">Pelajar keluar</p>
                                         @elseif($keluarmasuk->status_masuk == 2)
                                         <p>Baik</p>
                                         @else
@@ -313,6 +309,7 @@
                                     <td>
                                         <a href="{{route('pelajar.info', $keluarmasuk->id) }}" class="btn btn-warning btn-sm"> {{$status->user->name}}</a>
                                     </td>
+                                    <td>{{$keluarmasuk->kursus->nama_kursus}}</td>
                                     <td>{{$status->ndp_id}}</td>
                                     <td>{{$status->created_at}}</td>
                                     <td><span class="badge badge-danger">Digantung</span></td>
