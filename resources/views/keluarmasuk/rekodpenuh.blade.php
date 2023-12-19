@@ -336,6 +336,7 @@
                                                 <a href="{{route('pelajar.info', $keluarmasuk->id) }}" class="btn btn-warning btn-sm"> {{$status->user->name}}</a>
                                             </td>
                                             <td>{{$status->ndp_id}}</td>
+                                            <td>{{$keluarmasuk->kursus->nama_kursus}}</td>
                                             <td>{{$status->created_at}}</td>
                                             <td><span class="badge badge-danger">Digantung</span></td>
                                             <td>{{$status->catatan}}</td>
