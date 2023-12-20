@@ -73,7 +73,8 @@
         ],
       "buttons": [
         
-        "csv", "excel",
+        "csv", 
+        "excel",
         { extend: 'pdf',
               orientation: 'landscape',
               pageSize: 'LEGAL',
