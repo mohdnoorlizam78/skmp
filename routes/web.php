@@ -86,6 +86,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/keluarmasuk/editmasuk/{id}', [KeluarMasukController::class, 'editmasuk'])->name('keluarmasuk.editmasuk')->middleware(['tidakbolehAkses:1', 'tidakbolehAkses:2', 'tidakbolehAkses:4']);
     Route::patch('/keluarmasuk/updatemasuk/{id}', [KeluarMasukController::class, 'updatemasuk'])->name('keluarmasuk.updatemasuk')->middleware(['tidakbolehAkses:1', 'tidakbolehAkses:2', 'tidakbolehAkses:4']);
     Route::get('/keluarmasuk/rekodpenuh', [KeluarMasukController::class, 'rekodpenuh'])->name('keluarmasuk.rekodpenuh')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::get('/keluarmasuk/lulus-semua', [KeluarMasukController::class, 'lulusSemua'])->name('keluarmasuk.lulus-semua')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
 
     //tujuan
     Route::get('/tujuan/', [TujuanController::class, 'index'])->name('tujuan.index')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
