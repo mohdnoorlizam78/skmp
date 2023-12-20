@@ -254,7 +254,11 @@ class KeluarMasukController extends Controller
             'semakStatus'
         ));
     }
-
+    public function lulusSemua()
+    {
+        KeluarMasuk::query()->update(['statuskebenaran_id' => '2']);
+        return redirect()->route('keluarmasuk.semakpermohonan')->with('success', 'Data berjaya dikemas kini.');
+    }
     public function editmohon(string $id)
     {
         //kemas kini permohonan
