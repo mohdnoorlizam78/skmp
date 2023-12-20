@@ -5,6 +5,7 @@
         <div class="row mb-2">
             <div class="col-sm-6">
                 <h1>REKOD PERMOHONAN KELUAR</h1>
+                
             </div>
             <div class="col-sm-6">
                 <ol class="breadcrumb float-sm-right">
@@ -13,7 +14,7 @@
                 </ol>
             </div>
         </div>
-    </div>
+    </div><!-- /.container-fluid -->
 </section>
 
 @if(Session::has('success'))
@@ -25,10 +26,16 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-12">
+
+            <!-- /.card -->
+
             <div class="card">
-                <div class="card-body">   
+
+                <div class="card-body">
+                                  
                     <table id="tableMohon" class="table table-bordered table-striped">
                         <thead>
+                            
                             <tr>
                                 <th>Bil</th>
                                 <th>Nama pelajar</th>
@@ -36,15 +43,15 @@
                                 <th>Tarikh Mohon</th>
                                 <th>Tujuan</th>
                                 <th>Destinasi</th>
-                                <th>Status</th>
+                                <th> 
+                                    <a class="btn btn-warning" href="{{route('keluarmasuk.lulus-semua')}}">LULUS SEMUA</a><br>    
+                                    Status</th>
                             </tr>
+
                         </thead>
                         <tbody>
                             @foreach($semakStatus as $pelajar )
                             <tr>
-                                
-                                <td>
-                                    <input type="checkbox" name="ids" class="checkbox_ids" id="" value="{{$pelajar->id}}"></td>
                                 <td>{{$loop->iteration}}</td>
                                 <td>{{$pelajar->user->name}}</td>
                                 <td>{{$pelajar->kursus->nama_kursus}}</td>
@@ -61,14 +68,19 @@
                                     @else
                                     <span class="badge badge-danger">Digantung</span>
                                     @endif
+
                                 </td>
                             </tr>
                             @endforeach
                         </tbody>
-                    </tabl
+                    </table>
+                </div>
+                
             </div>
+
         </div>
     </div>
+    <!-- /.row -->
 </div>
 
 @endsection
