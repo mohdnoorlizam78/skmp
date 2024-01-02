@@ -59,6 +59,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/pelajar/info/{id}', [PelajarController::class, 'info'])->name('pelajar.info');
     Route::post('/pelajar/storepengguna', [PelajarController::class, 'storePengguna'])->name('pelajar.storePengguna')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
 
+    Route::get('/pelajar/addgambar', [PelajarController::class, 'createGambar'])->name('pelajar.creategambar')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::post('/pelajar/gambar', [PelajarController::class, 'gambar'])->name('pelajar.gambar')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+
     //permohonan pelajar
     Route::get('/statuskebenaran/', [StatusKebenaranController::class, 'index'])->name('statuskebenaran.index')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
     Route::post('/statuskebenaran/store', [StatusKebenaranController::class, 'store'])->name('statuskebenaran.store')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);

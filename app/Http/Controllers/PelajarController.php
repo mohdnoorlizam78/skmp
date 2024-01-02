@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GambarPelajar;
 use App\Models\Pelajar;
 use App\Models\Kursus;
 use App\Models\Peranan;
@@ -59,6 +60,15 @@ class PelajarController extends Controller
     public function store(Request $request)
     {
         //simpan pelajar baru
+        $newName = '';
+        if ($request->file('photo')) {
+            $extension = $request->file('photo')->getClientOriginalName();
+            $newName = $request->name . '-' . now()->timestamp . '.' . $extension;
+            $request->file('photo')->storeAs('photo', $newName);
+        }
+
+        $request['gambar'] = $newName;
+        Pelajar::create($request->all());
 
         $request->validate([
             'nama_pelajar' => 'required',
@@ -81,7 +91,7 @@ class PelajarController extends Controller
             'kursus_id' => $request->kursus_id,
             'no_ndp' => $request->no_ndp,
             'sesimasuk_id' => $request->sesimasuk_id,
-            //'gambar' => $request->gambar,
+            'gambar' => $request->gambar,
             'alamat_rumah' => $request->alamat_rumah,
             'alamat_lain' => $request->alamat_lain,
             'no_tel' => $request->no_tel,
@@ -98,6 +108,47 @@ class PelajarController extends Controller
         return view('pelajar.index', compact('formData'))->with('success', 'Rekod berjaya disimpan.');
         //return redirect(route('pelajar.index'))->with('success', 'Rekod berjaya disimpan');
     }
+    public function createGambar()
+    {
+        // buat data baru 
+        $senaraiKursus = Kursus::all();
+        return view('pelajar.addgambar', compact('senaraiKursus'));
+    }
+    public function gambar(Request $request)
+    {
+
+        // $newName = '';
+        // if ($request->file('photo')) {
+        //     $extension = $request->file('photo')->getClientOriginalName();
+        //     $newName = $request->name . '-' . now()->timestamp . '.' . $extension;
+        //     $request->file('photo')->storeAs('photo', $newName);
+        // }
+
+        // $pelajar['gambar'] = $newName;
+        // $pelajar = GambarPelajar::create($request->all());
+
+        // return view('pelajar.gambar')->with('success', 'Rekod berjaya disimpan.');
+
+
+        $request->validate([
+
+            'gambar' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+
+        $fileName = time() . '.' . $request->gambar->extension();
+        $request->gambar->storeAs('public/photo', $fileName);
+
+        $user = new GambarPelajar;
+        $user->gambar = $fileName;
+        $user->save();
+
+        return redirect()->route('pelajar.gambar')->with([
+            'message' => 'User added successfully!',
+            'status' => 'success'
+        ]);
+    }
+
+
     public function storePengguna(Request $request)
     {
         //simpan data baru
