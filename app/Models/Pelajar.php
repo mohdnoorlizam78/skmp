@@ -23,6 +23,7 @@ class Pelajar extends Model
         'no_tel',
         'no_tel_penjaga',
         'status',
+        'gantung'
     ];
     public function kursus(): BelongsTo
     {
