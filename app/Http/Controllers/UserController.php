@@ -52,7 +52,7 @@ class UserController extends Controller
         $senaraiPeranan = Peranan::all();
         $latestId = User::latest('id')->value('id');
 
-        return view('user.pentadbir', compact('senaraiPengguna', 'senaraiPeranan', 'latestId'));
+        return view('user.index', compact('senaraiPengguna', 'senaraiPeranan', 'latestId'));
     }
     /**
      * Show the form for creating a new resource.

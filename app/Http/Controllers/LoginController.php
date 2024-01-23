@@ -36,9 +36,9 @@ class LoginController extends Controller
         // periksa data dari login page
         if (Auth::attempt($infologin)) {
             if (Auth::user()->peranan_id == "1") {
-                return redirect('dashboard');
+                return redirect('kursus_tahfiz');
             } elseif (Auth::user()->peranan_id == "2") {
-                return redirect('dashboard');
+                return redirect('kursus_tahfiz');
             } elseif (Auth::user()->peranan_id == "3") {
                 return redirect('keluarmasuk');
             } else // jika login adalah pelajar
@@ -50,7 +50,7 @@ class LoginController extends Controller
     public function pentadbir()
     {
         // paparkan log masuk
-        return view('dashboard');
+        return view('kursus_tahfiz');
     }
     public function warden()
     {

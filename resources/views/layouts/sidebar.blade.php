@@ -1,8 +1,3 @@
-<!-- Brand Logo -->
-<a href="" class="brand-link">
-  <img src="{{asset('/AdminLTE-3.2.0/dist/img/logo_pantau.jpeg') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-  <span class="brand-text font-weight-light">PANTAU</span>
-</a>
 
 <!-- Sidebar -->
 <div class="sidebar">
@@ -43,80 +38,6 @@
         </a>
       </li>
 
-@if(Auth()->user()->peranan_id == "2" )
-      <li class="nav-header">PENGURUSAN PELAJAR</li>
-      <li class="nav-item">
-        <a href="{{route('pelajar.index')}}" class="nav-link">
-          <i class="nav-icon far fa-image"></i>
-          <p>
-            Senarai pelajar
-          </p>
-        </a>
-      </li>
-
-      <li class="nav-item">
-        <!-- <a href="/pelajar/kebenaran/kebenaran_keluar" class="nav-link"> -->
-        <a href="{{route('keluarmasuk.semakpermohonan')}}" class="nav-link">
-
-          <i class="nav-icon far fa-image"></i>
-          <p>
-            Sahkan Permohonan
-          </p>
-        </a>
-      </li>
-      <li class="nav-item">
-        <!-- <a href="/pelajar/kebenaran/kebenaran_keluar" class="nav-link"> -->
-        <a href="{{route('warden.index')}}" class="nav-link">
-
-          <i class="nav-icon far fa-image"></i>
-          <p>
-            Tindakan Disiplin
-          </p>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a href="{{route('keluarmasuk.rekodpenuh')}}" class="nav-link">
-          <i class="nav-icon far fa-image"></i>
-          <p>
-            Rekod keluar masuk
-          </p>
-        </a>
-      </li>
-      @endif
-
-      <!-- // periksa peranan user. Hanya admin dan warden sahaja.
-      @if(Auth::check())
-      @if(Auth()->user()->peranan_id == '1' || Auth()->user()->peranan_id == '2') -->
-
-      <!-- @endif
-      @endif -->
-
-      
-      <li class="nav-header">KELUAR-MASUK</li>
-
-      <li class="nav-item">
-        @if(Auth()->user()->peranan_id == 4)
-        <a href="{{ route('keluarmasuk.mohonkeluar')}}" class="nav-link">
-          <i class="nav-icon far fa-image"></i>
-          <p>
-            Mohon keluar
-          </p>
-        </a>
-        @endif
-      </li>
-
-
-      <li class="nav-item">
-        @if(Auth::user()->peranan_id == "3")
-        <a href="{{route('keluarmasuk.index')}} " class="nav-link">
-          <i class="nav-icon fas fa-columns"></i>
-          <p>
-            Sahkan Keluar-Masuk
-          </p>
-        </a>
-@endif
-      </li>
-
       @if(Auth()->user()->peranan_id == "2")
       <li class="nav-header">PENYELENGGARAAN</li>
       
@@ -131,30 +52,50 @@
 
       @if(Auth()->user()->peranan_id == "1")
       <li class="nav-item">
-        <a href="{{route('user.pentadbir')}}" class="nav-link">
+        <a href="{{route('user.index')}}" class="nav-link">
           <i class="nav-icon fas fa-ellipsis-h"></i>
           <p>Maklumat Terperinci Pengguna</p>
         </a>
       </li>
 
+      <li class="nav-header">SEPENUH MASA</li>
+
       <li class="nav-item">
-        <a href="{{route('kursus.index')}}" class="nav-link">
+        <a href="{{route('kursus_penuh.index')}}" class="nav-link">
           <i class="nav-icon fas fa-file"></i>
-          <p>Maklumat Kursus</p>
+          <p>Senarai Kursus</p>
         </a>
       </li>
+   
       <li class="nav-item">
-        <a href="{{route('sesimasuk.index')}}" class="nav-link">
+        <a href="{{route('tvet.senarai_mohon')}}" class="nav-link">
           <i class="nav-icon fas fa-file"></i>
-          <p>Sesi</p>
+          <p>Senarai Permohonan</p>
         </a>
       </li>
+
+      <li class="nav-header">TVET TAHFIZ</li>
+
       <li class="nav-item">
-        <a href="{{route('tujuan.index')}}" class="nav-link">
+        <a href="{{route('kursus_tahfiz.index')}}" class="nav-link">
           <i class="nav-icon fas fa-file"></i>
-          <p>Tujuan</p>
+          <p>Senarai Kursus</p>
         </a>
       </li>
+   
+      <li class="nav-item">
+        <a href="{{route('tvet_tahfiz.senarai_mohon')}}" class="nav-link">
+          <i class="nav-icon fas fa-file"></i>
+          <p>Senarai Permohonan</p>
+        </a>
+      </li>
+
+      {{-- <li class="nav-item">
+        <a href="{{route('sepenuh_masa.senarai_mohon')}}" class="nav-link">
+          <i class="nav-icon fas fa-file"></i>
+          <p>Permohonan Sepenuh Masa</p>
+        </a>
+      </li> --}}
       @endif
       
       <li class="nav-item">

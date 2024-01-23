@@ -10,8 +10,8 @@
     <p style="text-align:center;"><strong>Hakcipta &copy; <?php if (date('Y') == '2023') {
                                                             echo "2023";
                                                           } else {
-                                                            echo "2013 - " . date('Y');
-                                                          } ?><a href="http://www.ilpselandar.gov.my"> nuraisyah@jtm.gov.my </a></strong> </p>
+                                                            echo "2024 - " . date('Y');
+                                                          } ?><a href="http://www.ilpselandar.gov.my"> mohdnoorlizam@jtm.gov.my</a></strong> </p>
 
   </div>
 </footer>

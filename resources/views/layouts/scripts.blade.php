@@ -22,6 +22,74 @@
 
 <script>
   $(function() {
+    $("#tableTahfiz").DataTable({
+      
+      "language": {
+        "url": '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Malay.json',
+    },
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
+      dom: 'lBfrtip',
+        buttons: [
+          
+            //'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],
+      "buttons": [
+        
+        "csv", "excel",
+        { extend: 'pdf',
+              orientation: 'landscape',
+              pageSize: 'LEGAL',
+              title: 'Rekod Senarai Permohonan TVET Tahfiz' },
+        { extend: 'copy', text: 'Salin' },
+        { extend: 'print',
+              orientation: 'landscape',
+              pageSize: 'LEGAL',
+              title: 'Rekod Senarai Permohonan TVET Tahfiz',
+              text: 'Cetak' },
+        { extend: 'colvis', text: 'Paparan Kolum' },
+      ]
+    });
+
+    $("#tableMohon").DataTable({
+      
+      "language": {
+        "url": '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Malay.json',
+    },
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
+      dom: 'lBfrtip',
+        buttons: [
+          
+            //'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],
+      "buttons": [
+        
+        "csv", 
+        "excel",
+        { extend: 'pdf',
+              orientation: 'landscape',
+              pageSize: 'LEGAL',
+              title: 'Rekod Permohonan Keluar Pelajar' },
+        { extend: 'copy', text: 'Salin' },
+        { extend: 'print',
+              orientation: 'landscape',
+              pageSize: 'LEGAL',
+              title: 'Rekod Permohonan Keluar Pelajar',
+              text: 'Cetak' },
+        { extend: 'colvis', text: 'Paparan Kolum' },
+      ]
+    });
+
+
     $("#tablePelajar").DataTable({
       
       "language": {
@@ -243,12 +311,45 @@
         { extend: 'pdf',
               orientation: 'landscape',
               pageSize: 'LEGAL',
-              title: 'Rekod Pelajar Keluar Masuk' },
+              title: 'Rekod Kursus TVET' },
         { extend: 'copy', text: 'Salin' },
         { extend: 'print',
               orientation: 'landscape',
               pageSize: 'LEGAL',
-              title: 'Rekod Pelajar Keluar Masuk',
+              title: 'Rekod Kursus TVET',
+              text: 'Cetak' },
+        { extend: 'colvis', text: 'Paparan Kolum' },
+      ]
+    });
+
+    $("#tableKursusTahfiz").DataTable({
+      
+      "language": {
+        "url": '//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Malay.json',
+    },
+      "responsive": true,
+      "lengthChange": false,
+      "autoWidth": false,
+      dom: 'lBfrtip',
+        buttons: [
+          
+            //'copyHtml5',
+            'excelHtml5',
+            'csvHtml5',
+            'pdfHtml5'
+        ],
+      "buttons": [
+        
+        "csv", "excel",
+        { extend: 'pdf',
+              orientation: 'landscape',
+              pageSize: 'LEGAL',
+              title: 'Rekod Kursus TVET Tahfiz' },
+        { extend: 'copy', text: 'Salin' },
+        { extend: 'print',
+              orientation: 'landscape',
+              pageSize: 'LEGAL',
+              title: 'Rekod Kursus TVET Tahfiz',
               text: 'Cetak' },
         { extend: 'colvis', text: 'Paparan Kolum' },
       ]
