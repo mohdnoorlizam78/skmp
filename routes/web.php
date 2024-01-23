@@ -8,6 +8,7 @@ use App\Http\Controllers\KeluarMasukController;
 use App\Http\Controllers\TujuanController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LaranganController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SesiMasukController;
 
@@ -90,6 +91,13 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/keluarmasuk/updatemasuk/{id}', [KeluarMasukController::class, 'updatemasuk'])->name('keluarmasuk.updatemasuk')->middleware(['tidakbolehAkses:1', 'tidakbolehAkses:2', 'tidakbolehAkses:4']);
     Route::get('/keluarmasuk/rekodpenuh', [KeluarMasukController::class, 'rekodpenuh'])->name('keluarmasuk.rekodpenuh')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
     Route::get('/keluarmasuk/lulus-semua', [KeluarMasukController::class, 'lulusSemua'])->name('keluarmasuk.lulus-semua')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+
+    // warden melarang keluar
+    Route::get('/warden', [LaranganController::class, 'index'])->name('warden.index')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::get('/warden/edit/{id}', [LaranganController::class, 'edit'])->name('warden.edit')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::post('/warden/store', [LaranganController::class, 'store'])->name('warden.store')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::patch('/warden/update/{id}', [LaranganController::class, 'update'])->name('warden.update')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::delete('/warden/destroy/{id}', [LaranganController::class, 'destroy'])->name('warden.destroy')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
 
     //tujuan
     Route::get('/tujuan/', [TujuanController::class, 'index'])->name('tujuan.index')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
