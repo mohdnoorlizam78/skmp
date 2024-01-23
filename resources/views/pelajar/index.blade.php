@@ -145,6 +145,7 @@
                                 <input type="hidden" class="form-control" id="status" name="status" value="1">
                                 <input type="hidden" class="form-control" id="status" name="peranan_id" value="4">
                                 <input type="hidden" class="form-control" id="id" name="id" value="{{$latestId+1}}">
+                                <input type="hidden" class="form-control" id="gantung" name="gantung" value="1">
 
                                 <div class="form-group row">
                                     <label for="no_ndp" class="col-sm-2 col-form-label">Nama pelajar:</label>
