@@ -94,7 +94,8 @@ class UserController extends Controller
             'email' => $request->email,
             'password' => FacadesHash::make($request->password),
             'peranan_id' => $request->peranan_id,
-            'status' => $request->status
+            'status' => $request->status,
+            'gantung' => $request->gantung,
         ];
         User::create($data);
 
@@ -103,6 +104,7 @@ class UserController extends Controller
         $validatedData->user_id = $nextId;
         $validatedData->nama_pelajar = $request->input('name');
         $validatedData->status = 1;
+        $validatedData->gantung = 1;
         $validatedData->save();
 
         //return view('tujuan.index', compact('simpanData'))->with('success', 'Rekod berjaya disimpan.');
