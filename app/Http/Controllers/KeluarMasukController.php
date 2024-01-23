@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\KeluarMasuk;
+use App\Models\LaranganModel;
 use App\Models\Pelajar;
 use App\Models\Tujuan;
 use Illuminate\Http\Request;
@@ -79,7 +80,9 @@ class KeluarMasukController extends Controller
         $pelajarid = Auth()->user()->id;
         $pelajarData = Pelajar::where('user_id', $pelajarid)->first();
 
-        $dataMohon = KeluarMasuk::where('user_id', $pelajarid)->get();
+        $dataMohon = KeluarMasuk::where('user_id', $pelajarid)
+            ->orderBy('updated_at', 'desc')
+            ->get();
         $senaraiTujuan = Tujuan::all();
 
         return view('keluarmasuk.mohonkeluar', compact(
@@ -129,22 +132,25 @@ class KeluarMasukController extends Controller
         ]);
 
         $tarikh_baru = $request->input('created_at');
+        $pelajarid = Auth()->user()->id;
+
+        // periksa tindakan disiplin
+        $rekodTindakanDisiplin = Pelajar::where('gantung', '0')
+            ->where('user_id', $pelajarid)
+            ->first();
 
         // periksa tarikh mohon, adakah sama dengan tarikh telah dimohon
         $rekodSediaAdaKeluar = KeluarMasuk::whereDate('created_at', now()->toDateString())
             ->where('tujuan_id', '1')
             ->first();
-        $rekodSediaAdaKlinik = KeluarMasuk::whereDate('created_at', now()->toDateString())
-            ->where('tujuan_id', '3')
-            ->first();
 
-        if ($rekodSediaAdaKeluar) {
+        if ($rekodTindakanDisiplin) {
+            // paparkan mesej tindakan disiplin
+            $message = 'Permohonan gagal. Anda telah digantung untuk keluar.';
+            return redirect()->back()->with('gagal', $message);
+        } elseif ($rekodSediaAdaKeluar) {
             // paparkan mesej permohonan keluar gagal.
             $message = 'Permohonan gagal. Anda telah mohon keluar pada hari yang sama.';
-            return redirect()->back()->with('gagal', $message);
-        } elseif ($rekodSediaAdaKlinik) {
-            // paparkan mesej permohonan ke klinik gagal.
-            $message = 'Permohonan gagal. Anda telah mohon keluar ke klinik pada hari yang sama.';
             return redirect()->back()->with('gagal', $message);
         } else {
             // Simpan permohonan baru
@@ -175,12 +181,23 @@ class KeluarMasukController extends Controller
 
         $tarikh_baru = $request->input('created_at');
 
+        $pelajarid = Auth()->user()->id;
+
+        // periksa tindakan disiplin
+        $rekodTindakanDisiplin = Pelajar::where('gantung', '0')
+            ->where('user_id', $pelajarid)
+            ->first();
+
         // periksa tarikh mohon, adakah sama dengan tarikh telah dimohon
         $rekodSediaAdaBalik = KeluarMasuk::whereDate('created_at', now()->toDateString())
             ->where('tujuan_id', '2')
             ->first();
 
-        if ($rekodSediaAdaBalik) {
+        if ($rekodTindakanDisiplin) {
+            // paparkan mesej tindakan disiplin
+            $message = 'Permohonan gagal. Anda telah digantung untuk balik rumah.';
+            return redirect()->back()->with('gagal', $message);
+        } elseif ($rekodSediaAdaBalik) {
             // paparkan mesej permohonan keluar gagal.
             $message = 'Permohonan gagal. Anda telah mohon keluar balik pada hari yang sama.';
             return redirect()->back()->with('gagal', $message);
@@ -213,31 +230,46 @@ class KeluarMasukController extends Controller
         $tarikh_baru = $request->input('created_at');
 
         // periksa tarikh mohon, adakah sama dengan tarikh telah dimohon
-        $rekodSediaAdaKlinik = KeluarMasuk::whereDate('created_at', now()->toDateString())
-            ->where('tujuan_id', '3')
-            ->first();
+        // $rekodSediaAdaKlinik = KeluarMasuk::whereDate('created_at', now()->toDateString())
+        //     ->where('tujuan_id', '3')
+        //     ->first();
 
-        if ($rekodSediaAdaKlinik) {
-            // paparkan mesej permohonan keluar gagal.
-            $message = 'Permohonan gagal. Anda telah mohon keluar ke klinik pada hari yang sama.';
-            return redirect()->back()->with('gagal', $message);
-        } else {
-            // Simpan permohonan baru
-            KeluarMasuk::create([
-                'created_at' => $tarikh_baru,
-                'user_id' => $request->input('user_id'),
-                'kursus_id' => $request->input('kursus_id'),
-                'ndp_id' => $request->input('ndp_id'),
-                'tujuan_id' => $request->input('tujuan_id'),
-                'destinasi' => $request->input('destinasi'),
-                'statuskebenaran_id' => $request->input('statuskebenaran_id'),
-                'pegawaikeluar_id' => $request->input('pegawaikeluar_id'),
-                'pegawaimasuk_id' => $request->input('pegawaimasuk_id'),
-                'status_masuk' => $request->input('status_masuk'),
-            ]);
+        // if ($rekodSediaAdaKlinik) {
+        //     // paparkan mesej permohonan keluar gagal.
+        //     $message = 'Permohonan gagal. Anda telah mohon keluar ke klinik pada hari yang sama.';
+        //     return redirect()->back()->with('gagal', $message);
+        // } else {
+        //     // Simpan permohonan baru
+        //     KeluarMasuk::create([
+        //         'created_at' => $tarikh_baru,
+        //         'user_id' => $request->input('user_id'),
+        //         'kursus_id' => $request->input('kursus_id'),
+        //         'ndp_id' => $request->input('ndp_id'),
+        //         'tujuan_id' => $request->input('tujuan_id'),
+        //         'destinasi' => $request->input('destinasi'),
+        //         'statuskebenaran_id' => $request->input('statuskebenaran_id'),
+        //         'pegawaikeluar_id' => $request->input('pegawaikeluar_id'),
+        //         'pegawaimasuk_id' => $request->input('pegawaimasuk_id'),
+        //         'status_masuk' => $request->input('status_masuk'),
+        //     ]);
 
-            $message = 'Permohonan telah disimpan!';
-        }
+        //     $message = 'Permohonan telah disimpan!';
+        // }
+
+        KeluarMasuk::create([
+            'created_at' => $tarikh_baru,
+            'user_id' => $request->input('user_id'),
+            'kursus_id' => $request->input('kursus_id'),
+            'ndp_id' => $request->input('ndp_id'),
+            'tujuan_id' => $request->input('tujuan_id'),
+            'destinasi' => $request->input('destinasi'),
+            'statuskebenaran_id' => $request->input('statuskebenaran_id'),
+            'pegawaikeluar_id' => $request->input('pegawaikeluar_id'),
+            'pegawaimasuk_id' => $request->input('pegawaimasuk_id'),
+            'status_masuk' => $request->input('status_masuk'),
+        ]);
+
+        $message = 'Permohonan telah disimpan!';
         return redirect()->back()->with('berjaya', $message);
     }
 
