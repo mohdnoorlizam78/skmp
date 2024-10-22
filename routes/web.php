@@ -3,8 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+<<<<<<< HEAD
 use App\Http\Controllers\KursusTahfizController;
 use App\Http\Controllers\KursusTvetController;
+=======
+use App\Http\Controllers\LaranganController;
+>>>>>>> 0a3915b1d31e37fd10cc8a5d329f46920ed0ffb2
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SesiMasukController;
 use App\Http\Controllers\TahfizController;
@@ -33,7 +37,79 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index')->middleware('tidakbolehAkses:4');
+<<<<<<< HEAD
 
+=======
+    //kursus
+    Route::get('kursus', [KursusController::class, 'index'])->name('kursus.index')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::post('/kursus/store', [KursusController::class, 'store'])->name('kursus.store')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::get('/kursus/edit/{id}', [KursusController::class, 'edit'])->name('kursus.edit')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::patch('/kursus/update/{id}', [KursusController::class, 'update'])->name('kursus.update')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::delete('/kursus/destroy/{id}', [KursusController::class, 'destroy'])->name('kursus.destroy')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+
+    // sesi masuk
+    Route::get('sesimasuk', [SesiMasukController::class, 'index'])->name('sesimasuk.index')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::post('/sesimasuk/store', [SesiMasukController::class, 'store'])->name('sesimasuk.store')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::get('/sesimasuk/edit/{id}', [SesiMasukController::class, 'edit'])->name('sesimasuk.edit')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::patch('/sesimasuk/update/{id}', [SesiMasukController::class, 'update'])->name('sesimasuk.update')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::delete('/sesimasuk/destroy/{id}', [SesiMasukController::class, 'destroy'])->name('sesimasuk.destroy')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+
+    //pelajar
+    Route::get('pelajar', [PelajarController::class, 'index'])->name('pelajar.index')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::get('/pelajar/create', [PelajarController::class, 'create'])->name('pelajar.create')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::post('/pelajar/store', [PelajarController::class, 'store'])->name('pelajar.store')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::get('/pelajar/edit/{id}', [PelajarController::class, 'edit'])->name('pelajar.edit')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::patch('/pelajar/update/{id}', [PelajarController::class, 'update'])->name('pelajar.update')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::delete('/pelajar/destroy/{id}', [PelajarController::class, 'destroy'])->name('pelajar.destroy')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::get('/pelajar/info/{id}', [PelajarController::class, 'info'])->name('pelajar.info');
+    Route::post('/pelajar/storepengguna', [PelajarController::class, 'storePengguna'])->name('pelajar.storePengguna')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+
+    Route::get('/pelajar/addgambar', [PelajarController::class, 'createGambar'])->name('pelajar.creategambar')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::post('/pelajar/gambar', [PelajarController::class, 'gambar'])->name('pelajar.gambar')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+
+    //permohonan pelajar
+    Route::get('/statuskebenaran/', [StatusKebenaranController::class, 'index'])->name('statuskebenaran.index')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::post('/statuskebenaran/store', [StatusKebenaranController::class, 'store'])->name('statuskebenaran.store')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::get('/statuskebenaran/edit/{id}', [StatusKebenaranController::class, 'edit'])->name('statuskebenaran.edit')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::patch('/statuskebenaran/update/{id}', [StatusKebenaranController::class, 'update'])->name('statuskebenaran.update')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::delete('/statuskebenaran/destroy/{id}', [StatusKebenaranController::class, 'destroy'])->name('statuskebenaran.destroy')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+
+    // keluar-masuk pelajar
+    Route::get('/keluarmasuk', [KeluarMasukController::class, 'index'])->name('keluarmasuk.index')->middleware(['tidakbolehAkses:1', 'tidakbolehAkses:2', 'tidakbolehAkses:4']);
+    Route::get('/keluarmasuk/mohonkeluar', [KeluarMasukController::class, 'mohonkeluar'])->name('keluarmasuk.mohonkeluar')->middleware(['tidakbolehAkses:1', 'tidakbolehAkses:2', 'tidakbolehAkses:3']); //pelajar mohon keluar
+    Route::post('/keluarmasuk/simpanmohonkeluar', [KeluarMasukController::class, 'simpanmohonkeluar'])->name('keluarmasuk.simpanmohonkeluar')->middleware(['tidakbolehAkses:1', 'tidakbolehAkses:2', 'tidakbolehAkses:3']); //simpan mohon keluar
+    Route::post('/keluarmasuk/simpanmohonbalik', [KeluarMasukController::class, 'simpanmohonbalik'])->name('keluarmasuk.simpanmohonbalik')->middleware(['tidakbolehAkses:1', 'tidakbolehAkses:2', 'tidakbolehAkses:3']); //simpan mohon balik
+    Route::post('/keluarmasuk/simpanmohonklinik', [KeluarMasukController::class, 'simpanmohonklinik'])->name('keluarmasuk.simpanmohonklinik')->middleware(['tidakbolehAkses:1', 'tidakbolehAkses:2', 'tidakbolehAkses:3']); //simpan mohon klinik
+    Route::get('/keluarmasuk/semakpermohonan', [KeluarMasukController::class, 'semakPermohonan'])->name('keluarmasuk.semakpermohonan')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+
+    Route::patch('/keluarmasuk/updatemohon/{id}', [KeluarMasukController::class, 'updatemohon'])->name('keluarmasuk.updatemohon')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+
+    Route::post('/keluarmasuk/store', [KeluarMasukController::class, 'store'])->name('keluarmasuk.store')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::get('/keluarmasuk/editmohon/{id}', [KeluarMasukController::class, 'editmohon'])->name('keluarmasuk.editmohon')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::get('/keluarmasuk/sahkanmohon/{id}', [KeluarMasukController::class, 'sahkanmohon'])->name('keluarmasuk.sahkanmohon')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::patch('/keluarmasuk/update/{id}', [KeluarMasukController::class, 'update'])->name('keluarmasuk.update')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::delete('/keluarmasuk/destroy/{id}', [KeluarMasukController::class, 'destroy'])->name('keluarmasuk.destroy')->middleware(['tidakbolehAkses:3']);
+    Route::get('/keluarmasuk/editkeluar/{id}', [KeluarMasukController::class, 'editkeluar'])->name('keluarmasuk.editkeluar')->middleware(['tidakbolehAkses:1', 'tidakbolehAkses:2', 'tidakbolehAkses:4']);
+    Route::patch('/keluarmasuk/updatekeluar/{id}', [KeluarMasukController::class, 'updatekeluar'])->name('keluarmasuk.updatekeluar')->middleware(['tidakbolehAkses:1', 'tidakbolehAkses:2', 'tidakbolehAkses:4']);
+    Route::get('/keluarmasuk/editmasuk/{id}', [KeluarMasukController::class, 'editmasuk'])->name('keluarmasuk.editmasuk')->middleware(['tidakbolehAkses:1', 'tidakbolehAkses:2', 'tidakbolehAkses:4']);
+    Route::patch('/keluarmasuk/updatemasuk/{id}', [KeluarMasukController::class, 'updatemasuk'])->name('keluarmasuk.updatemasuk')->middleware(['tidakbolehAkses:1', 'tidakbolehAkses:2', 'tidakbolehAkses:4']);
+    Route::get('/keluarmasuk/rekodpenuh', [KeluarMasukController::class, 'rekodpenuh'])->name('keluarmasuk.rekodpenuh')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::get('/keluarmasuk/lulus-semua', [KeluarMasukController::class, 'lulusSemua'])->name('keluarmasuk.lulus-semua')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+
+    // warden melarang keluar
+    Route::get('/warden', [LaranganController::class, 'index'])->name('warden.index')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::get('/warden/edit/{id}', [LaranganController::class, 'edit'])->name('warden.edit')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::post('/warden/store', [LaranganController::class, 'store'])->name('warden.store')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::patch('/warden/update/{id}', [LaranganController::class, 'update'])->name('warden.update')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::delete('/warden/destroy/{id}', [LaranganController::class, 'destroy'])->name('warden.destroy')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+
+    //tujuan
+    Route::get('/tujuan/', [TujuanController::class, 'index'])->name('tujuan.index')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::post('/tujuan/store', [TujuanController::class, 'store'])->name('tujuan.store')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::get('/tujuan/edit/{id}', [TujuanController::class, 'edit'])->name('tujuan.edit')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::patch('/tujuan/update/{id}', [TujuanController::class, 'update'])->name('tujuan.update')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+    Route::delete('/tujuan/destroy/{id}', [TujuanController::class, 'destroy'])->name('tujuan.destroy')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
+>>>>>>> 0a3915b1d31e37fd10cc8a5d329f46920ed0ffb2
 
     //pengguna
     Route::get('/user', [UserController::class, 'index'])->name('user.index')->middleware(['tidakbolehAkses:3', 'tidakbolehAkses:4']);
